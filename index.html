@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quantico: Solutions through data</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#fb693a",
+              secondary: "#99E3D4",
+              "text-light": "#5E5340",
+              "text-dark": "#ffffff",
+              "helper": "#C8BA8D",
+              "background-light": "#fefcf9",
+              "background-dark": "#5e5340",
+              "card-light": "#ffffff",
+              "card-dark": "#2a2723"
+            },
+            fontFamily: {
+              display: ["Roboto", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+            },
+          },
+        },
+      };
+    </script>
+<style type="text/tailwindcss">
+      .scroller__inner {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 1.5rem;animation: scroll 40s linear infinite;
+      }
+      .scroller[data-animated="true"] {
+        overflow: hidden;
+        -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+        mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+      }
+      @keyframes scroll {
+        to {
+          transform: translate(calc(-50% - 0.75rem));
+        }
+      }
+      .social-icon:hover {
+        color: #fb693a;
+      }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark transition-colors duration-300">
+<div class="relative overflow-x-hidden" id="page-container">
+<header class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="container mx-auto px-6 py-4 flex justify-between items-center">
+<a class="text-2xl font-bold text-text-light dark:text-text-dark" href="#">Quantico</a>
+<div class="flex items-center space-x-4">
+<button class="p-2 rounded-full text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10 transition-colors" id="theme-toggle">
+<span class="material-icons block dark:hidden">dark_mode</span>
+<span class="material-icons hidden dark:block">light_mode</span>
+</button>
+<div class="relative">
+<button class="flex items-center space-x-1 p-2 rounded-full text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10 transition-colors" id="lang-toggle">
+<span class="material-icons text-xl">language</span>
+<span id="current-lang">EN</span>
+</button>
+<div class="hidden absolute right-0 mt-2 w-28 bg-card-light dark:bg-card-dark rounded-lg shadow-lg py-1" id="lang-menu">
+<a class="block px-4 py-2 text-sm text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10" href="#">English</a>
+<a class="block px-4 py-2 text-sm text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10" href="#">Español</a>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24">
+<section class="py-20 md:py-32">
+<div class="container mx-auto px-6 text-center">
+<h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-text-light dark:text-text-dark leading-tight">
+                        Solutions through data
+                    </h1>
+<p class="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-text-light/80 dark:text-text-dark/80">
+                        We transform complex data into clear, actionable insights that drive growth and innovation for your business.
+                    </p>
+<div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
+<a class="w-full sm:w-auto bg-primary text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:opacity-90 transition-opacity" href="#contact">
+                            Get in touch
+                        </a>
+<a class="w-full sm:w-auto bg-primary/10 dark:bg-primary/20 text-primary font-semibold py-3 px-8 rounded-full hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors" href="#portfolio">
+                            View our work
+                        </a>
+</div>
+</div>
+</section>
+<section class="py-20 md:py-32" id="portfolio">
+<div class="container mx-auto px-6 text-center">
+<h2 class="text-3xl md:text-4xl font-bold text-text-light dark:text-text-dark">Our Portfolio</h2>
+<p class="mt-4 max-w-xl mx-auto text-text-light/80 dark:text-text-dark/80">
+                        A glimpse into the innovative solutions we've delivered.
+                    </p>
+</div>
+<div class="mt-12 scroller" data-animated="true">
+<div class="scroller__inner">
+<div class="group relative w-72 md:w-96 flex-shrink-0 cursor-pointer">
+<img alt="Data analytics dashboard with various charts and graphs." class="w-full h-96 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8mXPCW9-wTF5BKnAgzz6ct7nGodMlE_KHSc-1HlGLfoRZtP13k2h5Oo617W_QBFc75-P0bilb5-cjwbvZemxbpssUS8vJEX8ioW0WWuxCgkmLfCeAVKzs-hwSgGSy54mkTr-x91cRoO-zU0QlY1pej_lMbWWYdKGlMgFvXG0HrlJJrITOaJiOaO8Llea5WKQxASS1W9Q0oP7dbsc_--h0BwEBMnhrMrSl8eCOkGDcE5EYL-u9N3zaRWLTNMnFfJZ0SV_hGI0o-QA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<h3 class="text-xl font-bold text-white">Project Insight</h3>
+<p class="text-white/80 mt-1">Business Intelligence Dashboard</p>
+</div>
+</div>
+<div class="group relative w-72 md:w-96 flex-shrink-0 cursor-pointer">
+<img alt="Abstract representation of data streams and connections." class="w-full h-96 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCt6CJwDJ9YfeXnfeyDp8s2-cU6MnK5yTw42wsW7cEIbh-y5PDLQi50djH22ct5oXmGP-NGGftNxMUoTFwH_MoUpJQZa5ja4QHSSyJuuBdRUSy25CVKMVAgsL1qH3zoD56PMDjNG45q0zRP8uWdK1ch0HMwZVnTWd83s62liR8PMkjIn_DyabkXlZD5h8b4xk49oLRiK6BnevCpldcqrziXPq5pNGTjV2roJjCc9A_E8NlAalqLqZ8bCO1rDD83FwKkHnpW84uXFA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<h3 class="text-xl font-bold text-white">DataFlow Engine</h3>
+<p class="text-white/80 mt-1">Real-time Data Processing</p>
+</div>
+</div>
+<div class="group relative w-72 md:w-96 flex-shrink-0 cursor-pointer">
+<img alt="Scientist looking at a complex molecular structure on a screen." class="w-full h-96 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU31E_lATRjkzj_9-wP8522X8K49uH5-2I1-Edxz5xUF-aKn10kPAxm4MLrI-60VH1UH4tfsa3dOlsAXPHGFjKEWP2njteplrle8bOW0N41t78k90v4wN0LvWRcEl_Mbyqs8uP64OdKvuKHltQ_Q9Qhd53tJwsdW6fFljE73BdNbUKK1zedJX1nuqLSUOgegMsPiQXfx0WZ9JBidIJxOOGqZTSVtks8aDY5i8XrM01Zkrr4NuUuUUTYBvhIabqKDY-IylcSXOy9Fc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<h3 class="text-xl font-bold text-white">Bio-Predict AI</h3>
+<p class="text-white/80 mt-1">Genomic Data Analysis</p>
+</div>
+</div>
+<div class="group relative w-72 md:w-96 flex-shrink-0 cursor-pointer">
+<img alt="Financial charts and stock market data on a computer screen." class="w-full h-96 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNsfVmW63Ao561BL_NxWMwldwx8KNXq3NFtjNQcDwWMDG3BKrnuXg4aomctVH5hES88lqszPp9sMtRXOTxx7bPsSr-8O5QaeM-uod4_2wz7C1udqtbkeD7-kwnam0sxs9J4ksLDfdSBmE7XemPwiLCSGrficGyR8O2RyIu4labb6AhLI64xzCX9bSIzKE_kamZRUy2aUeLnrjdKu1saPaDnY6HSlqYFy9aBEDjnZyrKBJu7MgW2py3fO9rrf0M6u2HVtaTapF1HWA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<h3 class="text-xl font-bold text-white">MarketPulse</h3>
+<p class="text-white/80 mt-1">Predictive Financial Modeling</p>
+</div>
+</div>
+<div class="group relative w-72 md:w-96 flex-shrink-0 cursor-pointer">
+<img alt="Team collaborating around a table with laptops and charts." class="w-full h-96 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDigOhcCCBjKN8ECaWOGNY6Nhm_PzX2Gc0lJuTXnOMpAhTnPQgMe0ueWovyv12NHv-jRvfRAG5A00ih-KSgzcQeLvOLxslF8sxqpM4JPWeijseYlo_DQYqZMSHyGF9Yq_6iQc8nm_dQBQ3QqmcgsiNRTiraAT8l0Sz6i7w3732Yo76q6w9OesenPJHGqfWt-tVIA8ycUM75sU5h2bk6BUIlk3o_O1iefoREvHFaDcMzjqrtir1CmQrtKfZwmtzCM5_9_pp5YxOM6GI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<h3 class="text-xl font-bold text-white">LogisticsNet</h3>
+<p class="text-white/80 mt-1">Supply Chain Optimization</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 md:py-32" id="tech-stack">
+<div class="container mx-auto px-6">
+<div class="flex flex-col items-center text-center">
+<h2 class="text-3xl md:text-4xl font-bold text-text-light dark:text-text-dark">Our Technology Stack</h2>
+<p class="mt-4 max-w-2xl mx-auto text-text-light/80 dark:text-text-dark/80">
+                    We leverage a modern, robust, and scalable technology stack to build high-performance applications that deliver tangible results.
+                </p>
+</div>
+<div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+<div class="flex flex-col items-center text-center md:items-start md:text-left">
+<div class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
+<span class="material-icons text-primary text-3xl">cloud_queue</span>
+</div>
+<h3 class="mt-4 text-xl font-semibold text-text-light dark:text-text-dark">Cloud &amp; DevOps</h3>
+<p class="mt-2 text-text-light/80 dark:text-text-dark/80">
+                        Scalable infrastructure on AWS, Azure, and Google Cloud, with automated CI/CD pipelines for rapid and reliable deployments.
+                    </p>
+</div>
+<div class="flex flex-col items-center text-center md:items-start md:text-left">
+<div class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
+<span class="material-icons text-primary text-3xl">storage</span>
+</div>
+<h3 class="mt-4 text-xl font-semibold text-text-light dark:text-text-dark">Data &amp; Analytics</h3>
+<p class="mt-2 text-text-light/80 dark:text-text-dark/80">
+                        Harnessing the power of Python, R, and SQL with big data technologies like Spark and Hadoop for deep, actionable insights.
+                    </p>
+</div>
+<div class="flex flex-col items-center text-center md:items-start md:text-left">
+<div class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
+<span class="material-icons text-primary text-3xl">terminal</span>
+</div>
+<h3 class="mt-4 text-xl font-semibold text-text-light dark:text-text-dark">Backend Development</h3>
+<p class="mt-2 text-text-light/80 dark:text-text-dark/80">
+                        Building robust server-side applications with Node.js, Django, and Go, ensuring performance and security at scale.
+                    </p>
+</div>
+<div class="flex flex-col items-center text-center md:items-start md:text-left">
+<div class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
+<span class="material-icons text-primary text-3xl">web</span>
+</div>
+<h3 class="mt-4 text-xl font-semibold text-text-light dark:text-text-dark">Frontend Frameworks</h3>
+<p class="mt-2 text-text-light/80 dark:text-text-dark/80">
+                        Crafting intuitive and responsive user interfaces with modern frameworks like React, Vue.js, and Svelte.
+                    </p>
+</div>
+<div class="flex flex-col items-center text-center md:items-start md:text-left">
+<div class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
+<span class="material-icons text-primary text-3xl">smartphone</span>
+</div>
+<h3 class="mt-4 text-xl font-semibold text-text-light dark:text-text-dark">Mobile Development</h3>
+<p class="mt-2 text-text-light/80 dark:text-text-dark/80">
+                        Developing cross-platform mobile experiences with React Native and Flutter for iOS and Android devices.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 md:py-32" id="contact">
+<div class="container mx-auto px-6">
+<div class="flex flex-col items-center text-center mb-12">
+<img alt="Abstract digital art representing technology and data." class="w-full aspect-video md:aspect-[2.3/1] object-cover rounded-2xl shadow-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU31E_lATRjkzj_9-wP8522X8K49uH5-2I1-Edxz5xUF-aKn10kPAxm4MLrI-60VH1UH4tfsa3dOlsAXPHGFjKEWP2njteplrle8bOW0N41t78k90v4wN0LvWRcEl_Mbyqs8uP64OdKvuKHltQ_Q9Qhd53tJwsdW6fFljE73BdNbUKK1zedJX1nuqLSUOgegMsPiQXfx0WZ9JBidIJxOOGqZTSVtks8aDY5i8XrM01Zkrr4NuUuUUTYBvhIabqKDY-IylcSXOy9Fc"/>
+</div>
+<div class="max-w-4xl mx-auto bg-card-light dark:bg-card-dark rounded-xl p-8 md:p-12 shadow-lg">
+<div class="text-center">
+<h2 class="text-3xl md:text-4xl font-bold text-text-light dark:text-text-dark">Let's build something together</h2>
+<p class="mt-4 text-text-light/80 dark:text-text-dark/80">
+                                Have a project in mind? Fill out the form below and we'll get back to you.
+                            </p>
+</div>
+<form class="mt-10 space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark" for="name">Full Name</label>
+<input class="mt-1 block w-full bg-background-light dark:bg-background-dark border-helper/50 dark:border-helper/30 rounded-lg shadow-sm focus:ring-primary focus:border-primary" id="name" name="name" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark" for="email">Email Address</label>
+<input class="mt-1 block w-full bg-background-light dark:bg-background-dark border-helper/50 dark:border-helper/30 rounded-lg shadow-sm focus:ring-primary focus:border-primary" id="email" name="email" type="email"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark" for="message">Message</label>
+<textarea class="mt-1 block w-full bg-background-light dark:bg-background-dark border-helper/50 dark:border-helper/30 rounded-lg shadow-sm focus:ring-primary focus:border-primary" id="message" name="message" rows="5"></textarea>
+</div>
+<div class="text-center">
+<button class="bg-primary text-white font-semibold py-3 px-10 rounded-full shadow-lg hover:opacity-90 transition-opacity" type="submit">
+                                    Send Message
+                                </button>
+</div>
+</form>
+</div>
+</div>
+</section>
+</main>
+<footer class="py-12 bg-background-light dark:bg-background-dark">
+<div class="container mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 text-sm text-text-light/80 dark:text-text-dark/80">
+<p class="order-2 md:order-1">© 2024 Quantico: Solutions through data</p>
+<div class="flex space-x-5 order-1 md:order-2">
+<a aria-label="Facebook" class="transition-colors duration-300 social-icon" href="#">
+<svg class="h-5 w-5 fill-current" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+</a>
+<a aria-label="LinkedIn" class="transition-colors duration-300 social-icon" href="#">
+<svg class="h-5 w-5 fill-current" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"></path></svg>
+</a>
+<a aria-label="Instagram" class="transition-colors duration-300 social-icon" href="#">
+<svg class="h-5 w-5 fill-current" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.314.935 20.644.522 19.854.218 19.09.083 18.22.015 16.947.003 15.667 0 15.26 0 12 0zm0 2.16c3.203 0 3.585.012 4.85.07 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.058 1.265.07 1.646.07 4.85s-.012 3.585-.07 4.85c-.055 1.17-.249 1.805-.413 2.227-.217.562-.477.96-.896 1.382-.42.419-.819.679-1.381.896-.422.164-1.057.36-2.227.413-1.265.058-1.646.07-4.85.07s-3.585-.012-4.85-.07c-1.17-.055-1.805-.249-2.227-.413-.562-.217-.96-.477-1.382-.896-.419-.42-.679-.819-.896-1.381-.164-.422-.36-1.057-.413-2.227-.058-1.265-.07-1.646-.07-4.85s.012-3.585.07-4.85c.055-1.17.249 1.805.413 2.227.217-.562.477-.96.896-1.382.42-.419.819.679 1.381-.896.422-.164 1.057-.36 2.227-.413 1.265-.058 1.646-.07 4.85-.07zM12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"></path></svg>
+</a>
+<a aria-label="YouTube" class="transition-colors duration-300 social-icon" href="#">
+<svg class="h-5 w-5 fill-current" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>YouTube</title><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+</a>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-helper/20 dark:border-helper/10 text-center text-text-light/60 dark:text-text-dark/60">
+<p>Made in Guatemala with ❤️</p>
+</div>
+</div>
+</footer>
+</div>
+<script>
+      // Theme toggle functionality
+      const themeToggle = document.getElementById('theme-toggle');
+      themeToggle.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+      });
+      // Language dropdown functionality
+      const langToggle = document.getElementById('lang-toggle');
+      const langMenu = document.getElementById('lang-menu');
+      langToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langMenu.classList.toggle('hidden');
+      });
+      document.addEventListener('click', () => {
+        langMenu.classList.add('hidden');
+      });
+      // Infinite scroller animation
+      const scroller = document.querySelector(".scroller");
+      if (scroller) {
+        const scrollerInner = scroller.querySelector(".scroller__inner");
+        const scrollerContent = Array.from(scrollerInner.children);
+        scrollerContent.forEach(item => {
+          const duplicatedItem = item.cloneNode(true);
+          duplicatedItem.setAttribute("aria-hidden", true);
+          scrollerInner.appendChild(duplicatedItem);
+        });
+      }
+    </script>
+</body></html>
