@@ -8,6 +8,7 @@
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
   <script>
     tailwind.config = {
       darkMode: "class",
@@ -34,6 +35,7 @@
       },
     };
   </script>
+
   <style type="text/tailwindcss">
     /* Make portfolio strip horizontally scrollable */
     .scroller {
@@ -117,6 +119,7 @@
         </div>
       </div>
     </header>
+
     <main class="pt-24">
       <section class="py-20 md:py-32">
         <div class="container mx-auto px-6 text-center">
@@ -140,6 +143,7 @@
           </div>
         </div>
       </section>
+
       <section class="py-20 md:py-32" id="portfolio">
         <div class="container mx-auto px-6 text-center">
           <h2 class="text-3xl md:text-4xl font-bold text-text-light dark:text-text-dark">Our Portfolio</h2>
@@ -152,6 +156,7 @@
           <div class="scroller__inner" id="projects-container"></div>
         </div>
       </section>
+
       <section class="py-20 md:py-32" id="tech-stack">
         <div class="container mx-auto px-6">
           <div class="flex flex-col items-center text-center">
@@ -226,6 +231,7 @@
           </div>
         </div>
       </section>
+
       <section class="py-20 md:py-32" id="contact">
         <div class="container mx-auto px-6">
           <div class="flex flex-col items-center text-center mb-12">
@@ -277,6 +283,7 @@
         </div>
       </section>
     </main>
+
     <footer class="py-12 bg-background-light dark:bg-background-dark">
       <div class="container mx-auto px-6">
         <div
@@ -417,7 +424,9 @@
       projects.forEach(project => {
         const card = document.createElement("a");
         card.href = `project.html?id=${project.id}`;
-        card.className = "group relative w-72 md:w-96 flex-shrink-0 cursor-pointer";
+        // Rounded corners + overflow-hidden so hover scale keeps rounded edges
+        card.className =
+          "group relative w-72 md:w-96 flex-shrink-0 cursor-pointer rounded-xl overflow-hidden";
 
         const safeAlt =
           project.subtitle ||
@@ -426,9 +435,9 @@
 
         card.innerHTML = `
           <img alt="${safeAlt}"
-               class="w-full h-96 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
+               class="w-full h-96 object-cover transition-transform duration-300 group-hover:scale-105"
                src="${project.image}" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
           <div class="absolute bottom-0 left-0 p-6">
             <h3 class="text-xl font-bold text-white">${project.title}</h3>
             <p class="text-white/80 mt-1">${project.subtitle}</p>
