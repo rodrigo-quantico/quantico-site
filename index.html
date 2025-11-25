@@ -83,7 +83,19 @@
     <header
       class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
       <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+<<<<<<< HEAD
+        <a class="flex items-center" href="index.html">
+          <img
+            id="logo-img"
+            src="src/assets/quantico-slogan-orange.png"
+            alt="Quantico Logo"
+            class="h-40 w-auto"
+          />
+          <span class="sr-only">Quantico</span>
+        </a>
+=======
         <a class="text-2xl font-bold text-text-light dark:text-text-dark" href="index.html">Quantico</a>
+>>>>>>> e0344b64910b90f6770b0c01159d9d1be985b5a1
         <div class="flex items-center space-x-4">
           <button
             class="p-2 rounded-full text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
@@ -117,8 +129,13 @@
             Solutions through data
           </h1>
           <p class="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-text-light/80 dark:text-text-dark/80">
+<<<<<<< HEAD
+            We transform complex data into clear, actionable insights that drive growth and innovation for
+            your business.
+=======
             We transform complex data into clear, actionable insights that drive growth and innovation for your
             business.
+>>>>>>> e0344b64910b90f6770b0c01159d9d1be985b5a1
           </p>
           <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
             <a class="w-full sm:w-auto bg-primary text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:opacity-90 transition-opacity"
@@ -325,6 +342,78 @@
   <script src="projects.js"></script>
 
   <script>
+<<<<<<< HEAD
+    const THEME_KEY = "quantico-theme";
+
+    function getPreferredTheme() {
+      const stored = localStorage.getItem(THEME_KEY);
+      if (stored === "light" || stored === "dark") return stored;
+      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        return "dark";
+      }
+      return "light";
+    }
+
+    const themeToggle = document.getElementById("theme-toggle");
+    const logoImg = document.getElementById("logo-img");
+
+    function updateLogo() {
+      if (!logoImg) return;
+      const isDark = document.documentElement.classList.contains("dark");
+      logoImg.src = isDark
+        ? "src/assets/quantico-slogan-white.png"
+        : "src/assets/quantico-slogan-orange.png";
+    }
+
+    function applyTheme(theme) {
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+      updateLogo();
+    }
+
+    // Initial theme
+    applyTheme(getPreferredTheme());
+
+    // Toggle theme and persist choice
+    if (themeToggle) {
+      themeToggle.addEventListener("click", () => {
+        const isDark = document.documentElement.classList.contains("dark");
+        const nextTheme = isDark ? "light" : "dark";
+        localStorage.setItem(THEME_KEY, nextTheme);
+        applyTheme(nextTheme);
+      });
+    }
+
+    // Sync with OS *only if* user hasn't chosen a theme
+    if (window.matchMedia) {
+      const mq = window.matchMedia("(prefers-color-scheme: dark)");
+      const handleChange = (e) => {
+        const stored = localStorage.getItem(THEME_KEY);
+        if (stored === "light" || stored === "dark") return;
+        const newTheme = e.matches ? "dark" : "light";
+        applyTheme(newTheme);
+      };
+      if (mq.addEventListener) {
+        mq.addEventListener("change", handleChange);
+      } else if (mq.addListener) {
+        mq.addListener(handleChange);
+      }
+    }
+
+    // Language dropdown functionality
+    const langToggle = document.getElementById("lang-toggle");
+    const langMenu = document.getElementById("lang-menu");
+    if (langToggle && langMenu) {
+      langToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        langMenu.classList.toggle("hidden");
+      });
+      document.addEventListener("click", () => {
+        langMenu.classList.add("hidden");
+=======
     // Theme toggle functionality
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
@@ -343,13 +432,17 @@
       });
       document.addEventListener('click', () => {
         langMenu.classList.add('hidden');
+>>>>>>> e0344b64910b90f6770b0c01159d9d1be985b5a1
       });
     }
 
     // Inject projects into portfolio scroller
     const projectsContainer = document.getElementById("projects-container");
 
+<<<<<<< HEAD
+=======
     // `projects` comes from projects.js (loaded above)
+>>>>>>> e0344b64910b90f6770b0c01159d9d1be985b5a1
     if (
       projectsContainer &&
       typeof projects !== "undefined" &&
@@ -366,6 +459,17 @@
           "Project cover image";
 
         card.innerHTML = `
+<<<<<<< HEAD
+          <img alt="${safeAlt}"
+               class="w-full h-96 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
+               src="${project.image}" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
+          <div class="absolute bottom-0 left-0 p-6">
+            <h3 class="text-xl font-bold text-white">${project.title}</h3>
+            <p class="text-white/80 mt-1">${project.subtitle}</p>
+          </div>
+        `;
+=======
       <img alt="${safeAlt}"
            class="w-full h-96 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
            src="${project.image}" />
@@ -375,12 +479,16 @@
         <p class="text-white/80 mt-1">${project.subtitle}</p>
       </div>
     `;
+>>>>>>> e0344b64910b90f6770b0c01159d9d1be985b5a1
 
         projectsContainer.appendChild(card);
       });
     }
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> e0344b64910b90f6770b0c01159d9d1be985b5a1
     // Infinite scroller animation (duplicate children for seamless loop)
     const scroller = document.querySelector(".scroller");
     if (scroller) {
