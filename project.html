@@ -540,7 +540,7 @@
       // Update <title>
       document.title = `Quantico - Project: ${project.title}`;
 
-      // Hero background
+      // Hero background (works with local src path)
       const hero = document.getElementById("hero-section");
       if (hero && project.image) {
         hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 100%), url("${project.image}")`;

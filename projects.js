@@ -1,77 +1,78 @@
 // projects.js
 const projects = [
   {
-    id: "insight-dashboard",
-    title: "Insight Dashboard",
-    subtitle: "Business Analytics Platform",
-    image: "https://picsum.photos/600/900?random=1",
+    id: "gflow-loans",
+    title: "GFlow",
+    subtitle: "Loan Management Software",
+    image: "src/assets/project-cover-gflow.png",
     description: `
-      Insight Dashboard is a modern analytics platform providing
-      real-time KPI tracking and intuitive data visualization tools.
+      GFlow is a loan management platform designed to help financial institutions
+      track loans, payments, and performance in a simple, modern interface.
     `,
     details: {
-      challenge: "Collect and unify metrics from multiple data silos.",
-      solution: "Built a scalable pipeline and interactive dashboard suite.",
-      stack: ["Python", "BigQuery", "Tableau", "dbt"]
+      challenge: "Fragmented loan data spread across spreadsheets and legacy tools.",
+      solution: "We centralized loan information into a single platform with clear KPIs and workflows.",
+      stack: ["React", "Node.js", "PostgreSQL", "AWS"]
     }
   },
   {
-    id: "dataflow-engine",
-    title: "DataFlow Engine",
-    subtitle: "High-Throughput Stream Processor",
-    image: "https://picsum.photos/600/900?random=2",
+    id: "akisi-wallet",
+    title: "Akisi",
+    subtitle: "Digital Wallet",
+    image: "src/assets/project-cover-akisi.png",
     description: `
-      A distributed system capable of handling millions of events 
-      per minute with automatic scaling.
+      Akisi is a digital wallet that lets users send, receive, and manage money
+      securely from their mobile devices.
     `,
     details: {
-      challenge: "Massive event ingestion with latency < 200ms.",
-      solution: "Implementing a multi-node streaming pipeline.",
-      stack: ["Go", "Kafka", "Redis", "Docker"]
+      challenge: "Give users a simple way to handle daily payments and transfers.",
+      solution: "We designed a clean experience focused on clarity, trust, and speed.",
+      stack: ["React Native", "Express.js", "MongoDB"]
     }
   },
   {
-    id: "neurovision-ai",
-    title: "NeuroVision AI",
-    subtitle: "Computer Vision Recognition Tool",
-    image: "https://picsum.photos/600/900?random=3",
+    id: "yotaxi-sf",
+    title: "YoTaxi",
+    subtitle: "Taxi App in San Francisco",
+    image: "src/assets/project-cover-yotaxi.png",
     description: `
-      A deep-learning computer vision application trained to detect
-      objects in dense and cluttered environments.
+      YoTaxi is a ride-hailing app connecting passengers with licensed taxis
+      across San Francisco, with real-time tracking and streamlined bookings.
     `,
     details: {
-      challenge: "High accuracy required with limited training images.",
-      solution: "Used transfer learning + synthetic data augmentation.",
-      stack: ["Python", "PyTorch", "OpenCV"]
+      challenge: "Modernize the taxi experience while keeping regulations and operations in mind.",
+      solution: "We built a rider-first experience with clear flows, tracking, and reliable dispatch.",
+      stack: ["React Native", "Node.js", "PostgreSQL", "Maps APIs"]
     }
   },
   {
-    id: "atlas-maps",
-    title: "Atlas Maps",
-    subtitle: "Interactive Geospatial Platform",
-    image: "https://picsum.photos/600/900?random=4",
+    id: "adoptio-app",
+    title: "Adoptio",
+    subtitle: "Pet Adopting App Concept",
+    image: "src/assets/project-cover-adoptio.png",
     description: `
-      A web-based geospatial tool offering real-time map analysis
-      and smooth rendering of massive datasets.
+      Adoptio is a product concept that helps people discover pets ready for adoption,
+      with guided flows and rich storytelling for each animal.
     `,
     details: {
-      challenge: "Rendering millions of points on web maps.",
-      solution: "WebGL acceleration with spatial indexing.",
-      stack: ["Mapbox", "WebGL", "JavaScript"]
+      challenge: "Make the adoption journey feel simple, guided, and emotionally engaging.",
+      solution: "We designed a mobile-first experience with clear filters, profiles, and onboarding.",
+      stack: ["Figma", "Design System", "Prototype"]
     }
   },
   {
-    id: "omni-commerce",
-    title: "OmniCommerce",
-    subtitle: "Unified Commerce Integration",
-    image: "https://picsum.photos/600/900?random=5",
+    id: "gflow-origination",
+    title: "GFlow Origination",
+    subtitle: "Loan Origination Software",
+    image: "src/assets/project-cover-gflow-prom.png",
     description: `
-      Sync listings, inventory, and orders across e-commerce marketplaces.
+      GFlow Origination streamlines the entire loan origination process,
+      from application to approval, with configurable workflows.
     `,
     details: {
-      challenge: "Different syncing rules across platforms.",
-      solution: "Unified middleware layer with conflict resolution.",
-      stack: ["Node.js", "PostgreSQL", "Shopify API"]
+      challenge: "Reduce manual steps and errors across the origination pipeline.",
+      solution: "We created configurable stages, automated checks, and clear dashboards.",
+      stack: ["React", "Node.js", "Workflow Engine", "REST APIs"]
     }
   }
 ];
