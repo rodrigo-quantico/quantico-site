@@ -154,8 +154,10 @@
                   class="flex items-center gap-2 text-text-light-secondary dark:text-text-dark-secondary hover:text-primary dark:hover:text-primary transition-colors mb-8"
                   href="index.html#portfolio"
                 >
+                  <!-- Top "Back to portfolio" arrow -->
                   <img
-                    src="src/assets/icon_arrow_back.svg"
+                    id="back-top-icon"
+                    src="src/assets/icon_arrow_back-light.svg"
                     alt="Back"
                     class="h-5 w-5"
                   />
@@ -374,7 +376,8 @@
                     href="#"
                   >
                     <img
-                      src="src/assets/icon_arrow_back.svg"
+                      id="prev-project-icon"
+                      src="src/assets/icon_arrow_back-light.svg"
                       alt="Previous project"
                       class="h-5 w-5"
                     />
@@ -398,7 +401,8 @@
                   >
                     <span id="next-project-label"></span>
                     <img
-                      src="src/assets/icon_arrow_forward.svg"
+                      id="next-project-icon"
+                      src="src/assets/icon_arrow_forward-light.svg"
                       alt="Next project"
                       class="h-5 w-5"
                     />
@@ -530,6 +534,30 @@
         : "src/assets/quantico-slogan-orange.png";
     }
 
+    function updateArrowIcons(theme) {
+      const backTopIcon = document.getElementById("back-top-icon");
+      const prevIcon = document.getElementById("prev-project-icon");
+      const nextIcon = document.getElementById("next-project-icon");
+
+      const isDark = theme === "dark";
+
+      if (backTopIcon) {
+        backTopIcon.src = isDark
+          ? "src/assets/icon_arrow_back.svg"
+          : "src/assets/icon_arrow_back-light.svg";
+      }
+      if (prevIcon) {
+        prevIcon.src = isDark
+          ? "src/assets/icon_arrow_back.svg"
+          : "src/assets/icon_arrow_back-light.svg";
+      }
+      if (nextIcon) {
+        nextIcon.src = isDark
+          ? "src/assets/icon_arrow_forward.svg"
+          : "src/assets/icon_arrow_forward-light.svg";
+      }
+    }
+
     function applyThemeLocal(theme) {
       if (theme === "dark") {
         document.documentElement.classList.add("dark");
@@ -537,6 +565,7 @@
         document.documentElement.classList.remove("dark");
       }
       updateLogo();
+      updateArrowIcons(theme);
     }
 
     // Initial theme
@@ -675,19 +704,15 @@
       const params = new URLSearchParams(window.location.search);
       projectId = params.get("id");
 
-      if (!projectId || typeof projects === "undefined") {
-        document.body.innerHTML =
-          "<div class='py-20 text-center text-xl text-white bg-background-dark min-h-screen flex items-center justify-center'>Project not found.</div>";
+      // If no id or projects not loaded, just do nothing
+      if (!projectId || typeof projects === "undefined" || !Array.isArray(projects)) {
         return;
       }
 
-      projectIndex = Array.isArray(projects)
-        ? projects.findIndex((p) => p.id === projectId)
-        : -1;
+      projectIndex = projects.findIndex((p) => p.id === projectId);
 
+      // If id doesn't match any project, also do nothing (no hard error)
       if (projectIndex === -1) {
-        document.body.innerHTML =
-          "<div class='py-20 text-center text-xl text-white bg-background-dark min-h-screen flex items-center justify-center'>Project not found.</div>";
         return;
       }
 

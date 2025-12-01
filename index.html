@@ -96,28 +96,39 @@
           <span class="sr-only">Quantico</span>
         </a>
         <div class="flex items-center space-x-4">
+          <!-- THEME TOGGLE -->
           <button
             class="p-2 rounded-full text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
             id="theme-toggle">
+            <!-- Visible in LIGHT mode -->
             <img
-              src="src/assets/icon_dark_mode.svg"
+              src="src/assets/icon_dark_mode-light.svg"
               alt="Enable dark mode"
               class="h-6 w-6 block dark:hidden"
             />
+            <!-- Visible in DARK mode -->
             <img
-              src="src/assets/icon_light_mode.svg"
+              src="src/assets/icon_dark_mode.svg"
               alt="Enable light mode"
               class="h-6 w-6 hidden dark:block"
             />
           </button>
+
+          <!-- LANGUAGE DROPDOWN -->
           <div class="relative">
             <button
               class="flex items-center space-x-1 p-2 rounded-full text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
               id="lang-toggle">
+              <!-- Language icon: light vs dark -->
+              <img
+                src="src/assets/icon_language-light.svg"
+                alt="Language"
+                class="h-5 w-5 block dark:hidden"
+              />
               <img
                 src="src/assets/icon_language.svg"
                 alt="Language"
-                class="h-5 w-5"
+                class="h-5 w-5 hidden dark:block"
               />
               <span id="current-lang">EN</span>
             </button>
@@ -184,7 +195,7 @@
       <section class="py-20 md:py-32" id="tech-stack">
         <div class="max-w-5xl mx-auto px-6">
           <div class="flex flex-col items-center text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-text-light dark:text-text-dark"
+            <h2 class="text-3xl md:4xl font-bold text-text-light dark:text-text-dark"
               data-i18n="tech.title">
               Our Technology Stack
             </h2>
