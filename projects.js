@@ -5,6 +5,7 @@ const projects = [
     title: "GFlow",
     subtitle: "Loan Management Software",
     image: "src/assets/project-cover-gflow.png",
+    video: "src/assets/video-glflow-lms.mp4",
     description: `
       GFlow is a loan management platform designed to help financial institutions
       track loans, payments, and performance in a simple, modern interface.

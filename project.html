@@ -74,9 +74,10 @@
   </script>
 </head>
 
-<body class="font-display bg-background-light dark:bg-background-dark">
+<body
+  class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark transition-colors duration-300">
   <div class="relative overflow-x-hidden" id="page-container">
-    <!-- SHARED HEADER -->
+    <!-- SHARED HEADER (same as landing) -->
     <header
       class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
       <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -90,31 +91,39 @@
           <span class="sr-only">Quantico</span>
         </a>
         <div class="flex items-center space-x-4">
-          <!-- Theme toggle using local icons -->
+          <!-- THEME TOGGLE (same icons as landing) -->
           <button
             class="p-2 rounded-full text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
             id="theme-toggle">
+            <!-- Visible in LIGHT mode -->
             <img
-              src="src/assets/icon_dark_mode.svg"
-              alt="Toggle dark mode"
+              src="src/assets/icon_dark_mode-light.svg"
+              alt="Enable dark mode"
               class="h-6 w-6 block dark:hidden"
             />
+            <!-- Visible in DARK mode -->
             <img
-              src="src/assets/icon_light_mode.svg"
-              alt="Toggle light mode"
+              src="src/assets/icon_dark_mode.svg"
+              alt="Enable light mode"
               class="h-6 w-6 hidden dark:block"
             />
           </button>
 
-          <!-- Language dropdown using local icon -->
+          <!-- LANGUAGE DROPDOWN (same icons as landing) -->
           <div class="relative">
             <button
               class="flex items-center space-x-1 p-2 rounded-full text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
               id="lang-toggle">
+              <!-- Language icon: light vs dark -->
+              <img
+                src="src/assets/icon_language-light.svg"
+                alt="Language"
+                class="h-5 w-5 block dark:hidden"
+              />
               <img
                 src="src/assets/icon_language.svg"
-                alt="Language selector"
-                class="h-6 w-6"
+                alt="Language"
+                class="h-5 w-5 hidden dark:block"
               />
               <span id="current-lang">EN</span>
             </button>
@@ -203,6 +212,11 @@
                         Start a similar project
                       </span>
                     </a>
+                  </section>
+
+                  <!-- MEDIA (video, only when available) -->
+                  <section id="project-media-section" class="px-0 mt-8">
+                    <div id="project-media-container"></div>
                   </section>
 
                   <!-- OVERVIEW + SIDEBAR -->
@@ -534,12 +548,12 @@
         : "src/assets/quantico-slogan-orange.png";
     }
 
-    function updateArrowIcons(theme) {
+    function updateArrowIcons() {
       const backTopIcon = document.getElementById("back-top-icon");
       const prevIcon = document.getElementById("prev-project-icon");
       const nextIcon = document.getElementById("next-project-icon");
 
-      const isDark = theme === "dark";
+      const isDark = document.documentElement.classList.contains("dark");
 
       if (backTopIcon) {
         backTopIcon.src = isDark
@@ -558,18 +572,18 @@
       }
     }
 
-    function applyThemeLocal(theme) {
+    function applyTheme(theme) {
       if (theme === "dark") {
         document.documentElement.classList.add("dark");
       } else {
         document.documentElement.classList.remove("dark");
       }
       updateLogo();
-      updateArrowIcons(theme);
+      updateArrowIcons();
     }
 
     // Initial theme
-    applyThemeLocal(getPreferredTheme());
+    applyTheme(getPreferredTheme());
 
     // Toggle theme and persist
     if (themeToggle) {
@@ -577,7 +591,7 @@
         const isDark = document.documentElement.classList.contains("dark");
         const nextTheme = isDark ? "light" : "dark";
         localStorage.setItem(THEME_KEY, nextTheme);
-        applyThemeLocal(nextTheme);
+        applyTheme(nextTheme);
       });
     }
 
@@ -588,7 +602,7 @@
         const stored = localStorage.getItem(THEME_KEY);
         if (stored === "light" || stored === "dark") return;
         const newTheme = e.matches ? "dark" : "light";
-        applyThemeLocal(newTheme);
+        applyTheme(newTheme);
       };
       if (mq.addEventListener) {
         mq.addEventListener("change", handleChange);
@@ -711,7 +725,7 @@
 
       projectIndex = projects.findIndex((p) => p.id === projectId);
 
-      // If id doesn't match any project, also do nothing (no hard error)
+      // If id doesn't match any project, also do nothing
       if (projectIndex === -1) {
         return;
       }
@@ -725,6 +739,40 @@
       const hero = document.getElementById("hero-section");
       if (hero && project.image) {
         hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 100%), url("${project.image}")`;
+      }
+
+      // MEDIA: optional video
+      const mediaSection = document.getElementById("project-media-section");
+      const mediaContainer = document.getElementById("project-media-container");
+
+      if (mediaSection && mediaContainer) {
+        // Clear anything old (for safety if navigating within the same page)
+        mediaContainer.innerHTML = "";
+
+        if (project.video) {
+          const wrapper = document.createElement("div");
+          wrapper.className =
+            "w-full rounded-xl overflow-hidden bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark shadow-sm";
+
+          const video = document.createElement("video");
+          video.src = project.video;
+          video.controls = true;
+          video.className = "w-full h-auto max-h-[540px] object-cover";
+          video.setAttribute("playsinline", "true");
+          video.setAttribute("aria-label", `${project.title} demo video`);
+
+          if (project.image) {
+            video.setAttribute("poster", project.image);
+          }
+
+          wrapper.appendChild(video);
+          mediaContainer.appendChild(wrapper);
+
+          mediaSection.classList.remove("hidden");
+        } else {
+          // No video: hide entire section
+          mediaSection.classList.add("hidden");
+        }
       }
 
       // Stack chips
