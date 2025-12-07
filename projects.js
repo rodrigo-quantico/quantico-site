@@ -36,6 +36,7 @@ const projects = [
     title: "YoTaxi",
     subtitle: "Taxi App in San Francisco",
     image: "src/assets/project-cover-yotaxi.png",
+    video: "src/assets/video-yotaxi.mp4",
     description: `
       YoTaxi is a ride-hailing app connecting passengers with licensed taxis
       across San Francisco, with real-time tracking and streamlined bookings.
