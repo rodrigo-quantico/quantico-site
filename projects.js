@@ -21,6 +21,7 @@ const projects = [
     title: "Akisi",
     subtitle: "Digital Wallet",
     image: "src/assets/project-cover-akisi.png",
+    video: "src/assets/video-akisi.mp4",
     description: `
       Akisi is a digital wallet that lets users send, receive, and manage money
       securely from their mobile devices.
