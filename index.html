@@ -83,16 +83,10 @@
   class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark transition-colors duration-300">
   <div class="relative overflow-x-hidden" id="page-container">
     <!-- SHARED HEADER -->
-    <header
-      class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
       <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
         <a class="flex items-center" href="index.html">
-          <img
-            id="logo-img"
-            src="src/assets/quantico-slogan-orange.png"
-            alt="Quantico Logo"
-            class="h-32 w-auto"
-          />
+          <img id="logo-img" src="src/assets/quantico-slogan-orange.png" alt="Quantico Logo" class="h-32 w-auto" />
           <span class="sr-only">Quantico</span>
         </a>
         <div class="flex items-center space-x-4">
@@ -101,17 +95,9 @@
             class="p-2 rounded-full text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
             id="theme-toggle">
             <!-- Visible in LIGHT mode -->
-            <img
-              src="src/assets/icon_dark_mode-light.svg"
-              alt="Enable dark mode"
-              class="h-6 w-6 block dark:hidden"
-            />
+            <img src="src/assets/icon_dark_mode-light.svg" alt="Enable dark mode" class="h-6 w-6 block dark:hidden" />
             <!-- Visible in DARK mode -->
-            <img
-              src="src/assets/icon_dark_mode.svg"
-              alt="Enable light mode"
-              class="h-6 w-6 hidden dark:block"
-            />
+            <img src="src/assets/icon_dark_mode.svg" alt="Enable light mode" class="h-6 w-6 hidden dark:block" />
           </button>
 
           <!-- LANGUAGE DROPDOWN -->
@@ -120,16 +106,8 @@
               class="flex items-center space-x-1 p-2 rounded-full text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
               id="lang-toggle">
               <!-- Language icon: light vs dark -->
-              <img
-                src="src/assets/icon_language-light.svg"
-                alt="Language"
-                class="h-5 w-5 block dark:hidden"
-              />
-              <img
-                src="src/assets/icon_language.svg"
-                alt="Language"
-                class="h-5 w-5 hidden dark:block"
-              />
+              <img src="src/assets/icon_language-light.svg" alt="Language" class="h-5 w-5 block dark:hidden" />
+              <img src="src/assets/icon_language.svg" alt="Language" class="h-5 w-5 hidden dark:block" />
               <span id="current-lang">EN</span>
             </button>
             <div class="hidden absolute right-0 mt-2 w-28 bg-card-light dark:bg-card-dark rounded-lg shadow-lg py-1"
@@ -161,13 +139,11 @@
           </p>
           <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
             <a class="w-full sm:w-auto bg-primary text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:opacity-90 transition-opacity"
-              href="#contact"
-              data-i18n="hero.ctaPrimary">
+              href="#contact" data-i18n="hero.ctaPrimary">
               Get in touch
             </a>
             <a class="w-full sm:w-auto bg-primary/10 dark:bg-primary/20 text-primary font-semibold py-3 px-8 rounded-full hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors"
-              href="#portfolio"
-              data-i18n="hero.ctaSecondary">
+              href="#portfolio" data-i18n="hero.ctaSecondary">
               View our work
             </a>
           </div>
@@ -176,12 +152,10 @@
 
       <section class="py-20 md:py-32" id="portfolio">
         <div class="max-w-5xl mx-auto px-6 text-center">
-          <h2 class="text-3xl md:text-4xl font-bold text-text-light dark:text-text-dark"
-            data-i18n="portfolio.title">
+          <h2 class="text-3xl md:text-4xl font-bold text-text-light dark:text-text-dark" data-i18n="portfolio.title">
             Our Portfolio
           </h2>
-          <p class="mt-4 max-w-xl mx-auto text-text-light/80 dark:text-text-dark/80"
-            data-i18n="portfolio.subtitle">
+          <p class="mt-4 max-w-xl mx-auto text-text-light/80 dark:text-text-dark/80" data-i18n="portfolio.subtitle">
             A glimpse into the innovative solutions we've delivered.
           </p>
         </div>
@@ -195,88 +169,72 @@
       <section class="py-20 md:py-32" id="tech-stack">
         <div class="max-w-5xl mx-auto px-6">
           <div class="flex flex-col items-center text-center">
-            <h2 class="text-3xl md:4xl font-bold text-text-light dark:text-text-dark"
-              data-i18n="tech.title">
+            <h2 class="text-3xl md:4xl font-bold text-text-light dark:text-text-dark" data-i18n="tech.title">
               Our Technology Stack
             </h2>
-            <p class="mt-4 max-w-2xl mx-auto text-text-light/80 dark:text-text-dark/80"
-              data-i18n="tech.subtitle">
+            <p class="mt-4 max-w-2xl mx-auto text-text-light/80 dark:text-text-dark/80" data-i18n="tech.subtitle">
               We leverage a modern, robust, and scalable technology stack to build high-performance
               applications that deliver tangible results.
             </p>
           </div>
           <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             <div class="flex flex-col items-center text-center md:items-start md:text-left">
-              <div
-                class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
+              <div class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
                 <span class="material-icons text-primary text-3xl">cloud_queue</span>
               </div>
-              <h3 class="mt-4 text-xl font-semibold text-text-light dark:text-text-dark"
-                data-i18n="tech.cloud.title">
+              <h3 class="mt-4 text-xl font-semibold text-text-light dark:text-text-dark" data-i18n="tech.cloud.title">
                 Cloud &amp; DevOps
               </h3>
-              <p class="mt-2 text-text-light/80 dark:text-text-dark/80"
-                data-i18n="tech.cloud.body">
+              <p class="mt-2 text-text-light/80 dark:text-text-dark/80" data-i18n="tech.cloud.body">
                 Scalable infrastructure on AWS, Azure, and Google Cloud, with automated CI/CD pipelines
                 for rapid and reliable deployments.
               </p>
             </div>
             <div class="flex flex-col items-center text-center md:items-start md:text-left">
-              <div
-                class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
+              <div class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
                 <span class="material-icons text-primary text-3xl">storage</span>
               </div>
-              <h3 class="mt-4 text-xl font-semibold text-text-light dark:text-text-dark"
-                data-i18n="tech.data.title">
+              <h3 class="mt-4 text-xl font-semibold text-text-light dark:text-text-dark" data-i18n="tech.data.title">
                 Data &amp; Analytics
               </h3>
-              <p class="mt-2 text-text-light/80 dark:text-text-dark/80"
-                data-i18n="tech.data.body">
+              <p class="mt-2 text-text-light/80 dark:text-text-dark/80" data-i18n="tech.data.body">
                 Harnessing the power of Python, R, and SQL with big data technologies like Spark and
                 Hadoop for deep, actionable insights.
               </p>
             </div>
             <div class="flex flex-col items-center text-center md:items-start md:text-left">
-              <div
-                class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
+              <div class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
                 <span class="material-icons text-primary text-3xl">terminal</span>
               </div>
-              <h3 class="mt-4 text-xl font-semibold text-text-light dark:text-text-dark"
-                data-i18n="tech.backend.title">
+              <h3 class="mt-4 text-xl font-semibold text-text-light dark:text-text-dark" data-i18n="tech.backend.title">
                 Backend Development
               </h3>
-              <p class="mt-2 text-text-light/80 dark:text-text-dark/80"
-                data-i18n="tech.backend.body">
+              <p class="mt-2 text-text-light/80 dark:text-text-dark/80" data-i18n="tech.backend.body">
                 Building robust server-side applications with Node.js, Django, and Go, ensuring
                 performance and security at scale.
               </p>
             </div>
             <div class="flex flex-col items-center text-center md:items-start md:text-left">
-              <div
-                class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
+              <div class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
                 <span class="material-icons text-primary text-3xl">web</span>
               </div>
               <h3 class="mt-4 text-xl font-semibold text-text-light dark:text-text-dark"
                 data-i18n="tech.frontend.title">
                 Frontend Frameworks
               </h3>
-              <p class="mt-2 text-text-light/80 dark:text-text-dark/80"
-                data-i18n="tech.frontend.body">
+              <p class="mt-2 text-text-light/80 dark:text-text-dark/80" data-i18n="tech.frontend.body">
                 Crafting intuitive and responsive user interfaces with modern frameworks like React,
                 Vue.js, and Svelte.
               </p>
             </div>
             <div class="flex flex-col items-center text-center md:items-start md:text-left">
-              <div
-                class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
+              <div class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
                 <span class="material-icons text-primary text-3xl">smartphone</span>
               </div>
-              <h3 class="mt-4 text-xl font-semibold text-text-light dark:text-text-dark"
-                data-i18n="tech.mobile.title">
+              <h3 class="mt-4 text-xl font-semibold text-text-light dark:text-text-dark" data-i18n="tech.mobile.title">
                 Mobile Development
               </h3>
-              <p class="mt-2 text-text-light/80 dark:text-text-dark/80"
-                data-i18n="tech.mobile.body">
+              <p class="mt-2 text-text-light/80 dark:text-text-dark/80" data-i18n="tech.mobile.body">
                 Developing cross-platform mobile experiences with React Native and Flutter for iOS and
                 Android devices.
               </p>
@@ -293,8 +251,7 @@
               data-i18n="why.title">
               Why Quantico?
             </h2>
-            <p class="mt-4 text-lg text-text-light/80 dark:text-text-dark/80"
-              data-i18n="why.story2">
+            <p class="mt-4 text-lg text-text-light/80 dark:text-text-dark/80" data-i18n="why.story2">
               We believe data is the best compass for an organization. We provide world-class solutions
               with state-of-the-art technology at a fair rate, using data as the main pillar of our
               decision-making.
@@ -303,34 +260,28 @@
 
           <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10">
             <div>
-              <h3 class="text-xl font-semibold text-text-light dark:text-text-dark"
-                data-i18n="why.col1.title">
+              <h3 class="text-xl font-semibold text-text-light dark:text-text-dark" data-i18n="why.col1.title">
                 Built on trust
               </h3>
-              <p class="mt-3 text-text-light/80 dark:text-text-dark/80"
-                data-i18n="why.col1.body">
+              <p class="mt-3 text-text-light/80 dark:text-text-dark/80" data-i18n="why.col1.body">
                 Over a decade of experience means we bring shared knowledge, trust, and a proven way
                 of collaborating on large scale projects.
               </p>
             </div>
             <div>
-              <h3 class="text-xl font-semibold text-text-light dark:text-text-dark"
-                data-i18n="why.col2.title">
+              <h3 class="text-xl font-semibold text-text-light dark:text-text-dark" data-i18n="why.col2.title">
                 Data as compass
               </h3>
-              <p class="mt-3 text-text-light/80 dark:text-text-dark/80"
-                data-i18n="why.col2.body">
+              <p class="mt-3 text-text-light/80 dark:text-text-dark/80" data-i18n="why.col2.body">
                 We treat data as the core decision-making tool, combining analytics with thoughtful UX to
                 guide products in the right direction.
               </p>
             </div>
             <div>
-              <h3 class="text-xl font-semibold text-text-light dark:text-text-dark"
-                data-i18n="why.col3.title">
+              <h3 class="text-xl font-semibold text-text-light dark:text-text-dark" data-i18n="why.col3.title">
                 Fair partnership
               </h3>
-              <p class="mt-3 text-text-light/80 dark:text-text-dark/80"
-                data-i18n="why.col3.body">
+              <p class="mt-3 text-text-light/80 dark:text-text-dark/80" data-i18n="why.col3.body">
                 We aim for long-term partnerships, offering transparent collaboration, realistic
                 timelines and fair pricing for the value we create.
               </p>
@@ -348,20 +299,17 @@
           </div>
           <div class="max-w-4xl mx-auto bg-card-light dark:bg-card-dark rounded-xl p-8 md:p-12 shadow-lg">
             <div class="text-center">
-              <h2 class="text-3xl md:4xl font-bold text-text-light dark:text-text-dark"
-                data-i18n="contact.title">
+              <h2 class="text-3xl md:4xl font-bold text-text-light dark:text-text-dark" data-i18n="contact.title">
                 Let's build something together
               </h2>
-              <p class="mt-4 text-text-light/80 dark:text-text-dark/80"
-                data-i18n="contact.subtitle">
+              <p class="mt-4 text-text-light/80 dark:text-text-dark/80" data-i18n="contact.subtitle">
                 Have a project in mind? Fill out the form below and we'll get back to you.
               </p>
             </div>
             <form class="mt-10 space-y-6">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label class="block text-sm font-medium text-text-light dark:text-text-dark"
-                    for="name"
+                  <label class="block text-sm font-medium text-text-light dark:text-text-dark" for="name"
                     data-i18n="contact.fullNameLabel">
                     Full Name
                   </label>
@@ -370,8 +318,7 @@
                     id="name" name="name" type="text" />
                 </div>
                 <div>
-                  <label class="block text-sm font-medium text-text-light dark:text-text-dark"
-                    for="email"
+                  <label class="block text-sm font-medium text-text-light dark:text-text-dark" for="email"
                     data-i18n="contact.emailLabel">
                     Email Address
                   </label>
@@ -381,8 +328,7 @@
                 </div>
               </div>
               <div>
-                <label class="block text-sm font-medium text-text-light dark:text-text-dark"
-                  for="message"
+                <label class="block text-sm font-medium text-text-light dark:text-text-dark" for="message"
                   data-i18n="contact.messageLabel">
                   Message
                 </label>
@@ -393,8 +339,7 @@
               <div class="text-center">
                 <button
                   class="bg-primary text-white font-semibold py-3 px-10 rounded-full shadow-lg hover:opacity-90 transition-opacity"
-                  type="submit"
-                  data-i18n="contact.submit">
+                  type="submit" data-i18n="contact.submit">
                   Send Message
                 </button>
               </div>
@@ -406,12 +351,14 @@
 
     <footer class="py-12 bg-background-light dark:bg-background-dark">
       <div class="max-w-5xl mx-auto px-6">
+    
         <div
           class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 text-sm text-text-light/80 dark:text-text-dark/80">
           <p class="order-2 md:order-1" data-i18n="footer.copyright">
             © 2020 Quantico: Solutions through data
           </p>
           <div class="flex space-x-5 order-1 md:order-2">
+              <!-- Social Media Commented out for later 
             <a aria-label="Facebook" class="transition-colors duration-300 social-icon" href="#">
               <svg class="h-5 w-5 fill-current" role="img" viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg">
@@ -421,7 +368,8 @@
                 </path>
               </svg>
             </a>
-            <a aria-label="LinkedIn" class="transition-colors duration-300 social-icon" href="#">
+          -->
+            <a aria-label="LinkedIn" class="transition-colors duration-300 social-icon" href="https://www.linkedin.com/company/quantico-gt/" target="_blank">
               <svg class="h-5 w-5 fill-current" role="img" viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg">
                 <title>LinkedIn</title>
@@ -430,6 +378,7 @@
                 </path>
               </svg>
             </a>
+              <!-- Social Media Commented out for later 
             <a aria-label="Instagram" class="transition-colors duration-300 social-icon" href="#">
               <svg class="h-5 w-5 fill-current" role="img" viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg">
@@ -439,6 +388,8 @@
                 </path>
               </svg>
             </a>
+          -->
+              <!-- Social Media Commented out for later 
             <a aria-label="YouTube" class="transition-colors duration-300 social-icon" href="#">
               <svg class="h-5 w-5 fill-current" role="img" viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg">
@@ -448,6 +399,7 @@
                 </path>
               </svg>
             </a>
+          -->
           </div>
         </div>
         <div
@@ -457,7 +409,6 @@
       </div>
     </footer>
   </div>
-
   <!-- Projects data -->
   <script src="projects.js"></script>
   <!-- Translations + language handling -->
