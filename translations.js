@@ -63,6 +63,16 @@ const translations = {
     "why.col3.body":
       "We aim for long-term partnerships, offering transparent collaboration, realistic timelines, and fair pricing for the value we create.",
 
+    // About
+    "about.title": "About Us",
+    "about.mission": '"Our mission is simple: deliver world-class solutions at a fair rate through transparent, long-term partnerships."',
+    "about.pablo.role": "Chief Executive Officer",
+    "about.pablo.bio": "Senior Project Manager and SME from Guatemala with over 15 years of international experience overseeing projects from start to finish.",
+    "about.pablo.quote": '"We believe in transparency, fairness, and building things that truly help people."',
+    "about.rodrigo.role": "Chief Technology Officer",
+    "about.rodrigo.bio": "Senior UX/UI Designer and Developer with extensive experience in web and application development. Skilled in JavaScript, React, and user-centric methodologies across transportation, hospitality, and finance industries for over 12 years.",
+    "about.rodrigo.quote": '"God first. People second. Technology serving both."',
+
     // Contact
     "contact.title": "Let's build something together",
     "contact.subtitle":
@@ -216,6 +226,16 @@ const translations = {
     "why.col3.title": "Alianza justa",
     "why.col3.body":
       "Buscamos relaciones de largo plazo, ofreciendo colaboración transparente, tiempos realistas y precios justos por el valor que creamos.",
+
+    // About
+    "about.title": "Sobre Nosotros",
+    "about.mission": '"Nuestra misión es simple: entregar soluciones de clase mundial a un precio justo mediante alianzas transparentes y de largo plazo."',
+    "about.pablo.role": "Director Ejecutivo",
+    "about.pablo.bio": "Gerente de Proyectos Senior y PYME de Guatemala con más de 15 años de experiencia internacional supervisando proyectos de principio a fin.",
+    "about.pablo.quote": '"Creemos en la transparencia, la equidad y en construir cosas que realmente ayuden a las personas."',
+    "about.rodrigo.role": "Director de Tecnología",
+    "about.rodrigo.bio": "Diseñador y Desarrollador UX/UI Senior con amplia experiencia en desarrollo web y de aplicaciones. Especializado en JavaScript, React y metodologías centradas en el usuario en industrias de transporte, hospitalidad y finanzas por más de 12 años.",
+    "about.rodrigo.quote": '"Dios primero. Las personas segundo. La tecnología al servicio de ambos."',
 
     // Contact
     "contact.title": "Construyamos algo juntos",
