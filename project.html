@@ -76,43 +76,90 @@
           <span class="sr-only">Quantico</span>
         </a>
         <div class="flex items-center space-x-4">
-          <!-- THEME TOGGLE (same icons as landing) -->
+          <!-- CONTACT US (secondary) — desktop only -->
+          <a href="index.html#contact"
+            class="hidden lg:inline-flex bg-primary/10 dark:bg-primary/20 text-primary font-semibold py-2.5 px-5 rounded-full hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors text-sm whitespace-nowrap"
+            data-i18n="header.contactUs">
+            Contact us
+          </a>
+          <!-- BOOK A CALL CTA — desktop only -->
+          <a href="scheduling.html"
+            class="hidden lg:inline-flex bg-primary text-white font-semibold py-2.5 px-5 rounded-full shadow hover:opacity-90 transition-opacity text-sm whitespace-nowrap"
+            data-i18n="header.bookCall">
+            Book a call
+          </a>
+          <!-- THEME TOGGLE — desktop only -->
           <button
-            class="p-2 rounded-full text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+            class="hidden lg:block p-2 rounded-full text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
             id="theme-toggle">
-            <!-- Visible in LIGHT mode -->
-            <img src="src/assets/icon_dark_mode-light.svg" alt="Enable dark mode" class="h-6 w-6 block dark:hidden" />
-            <!-- Visible in DARK mode -->
-            <img src="src/assets/icon_dark_mode.svg" alt="Enable light mode" class="h-6 w-6 hidden dark:block" />
+            <img src="src/assets/icon_light_mode-light.svg" alt="Light mode" class="h-6 w-6 block dark:hidden" />
+            <img src="src/assets/icon_dark_mode.svg" alt="Dark mode" class="h-6 w-6 hidden dark:block" />
           </button>
-
-          <!-- LANGUAGE DROPDOWN (same icons as landing) -->
-          <div class="relative">
+          <!-- LANGUAGE DROPDOWN — desktop only -->
+          <div class="hidden lg:block relative">
             <button
               class="flex items-center space-x-1 p-2 rounded-full text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
               id="lang-toggle">
-              <!-- Language icon: light vs dark -->
               <img src="src/assets/icon_language-light.svg" alt="Language" class="h-5 w-5 block dark:hidden" />
               <img src="src/assets/icon_language.svg" alt="Language" class="h-5 w-5 hidden dark:block" />
               <span id="current-lang">EN</span>
             </button>
-            <div class="hidden absolute right-0 mt-2 w-28 bg-card-light dark:bg-card-dark rounded-lg shadow-lg py-1"
-              id="lang-menu">
-              <a data-lang="en"
-                class="block px-4 py-2 text-sm text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10"
-                href="#">
-                English
-              </a>
-              <a data-lang="es"
-                class="block px-4 py-2 text-sm text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10"
-                href="#">
-                Español
-              </a>
+            <div class="hidden absolute right-0 mt-2 w-28 bg-card-light dark:bg-card-dark rounded-lg shadow-lg py-1" id="lang-menu">
+              <a data-lang="en" class="block px-4 py-2 text-sm text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10" href="#">English</a>
+              <a data-lang="es" class="block px-4 py-2 text-sm text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10" href="#">Español</a>
             </div>
           </div>
+          <!-- HAMBURGER — mobile/tablet only -->
+          <button id="hamburger" aria-label="Open menu" aria-expanded="false"
+            class="lg:hidden p-2 rounded-full text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+            <span class="material-icons">menu</span>
+          </button>
         </div>
       </div>
     </header>
+
+    <!-- DRAWER OVERLAY -->
+    <div id="drawer-overlay" class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300"></div>
+
+    <!-- SIDE DRAWER -->
+    <aside id="drawer" class="fixed top-0 right-0 bottom-0 z-50 w-72 bg-background-light dark:bg-background-dark shadow-2xl translate-x-full transition-transform duration-300 ease-out flex flex-col">
+      <div class="flex items-center justify-between px-5 py-4 border-b border-helper/20 dark:border-helper/10">
+        <img id="drawer-logo" src="src/assets/quantico-slogan-orange.png" alt="Quantico" class="h-20 w-auto" />
+        <button id="drawer-close" aria-label="Close menu"
+          class="p-2 rounded-full text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+          <span class="material-icons">close</span>
+        </button>
+      </div>
+      <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
+        <a href="index.html" class="drawer-link flex items-center px-4 py-3 rounded-xl text-text-light dark:text-text-dark font-medium hover:bg-primary/5 dark:hover:bg-primary/10 hover:text-primary transition-colors" data-i18n="nav.home">Home</a>
+        <a href="index.html#portfolio" class="drawer-link flex items-center px-4 py-3 rounded-xl text-text-light dark:text-text-dark font-medium hover:bg-primary/5 dark:hover:bg-primary/10 hover:text-primary transition-colors" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="index.html#about" class="drawer-link flex items-center px-4 py-3 rounded-xl text-text-light dark:text-text-dark font-medium hover:bg-primary/5 dark:hover:bg-primary/10 hover:text-primary transition-colors" data-i18n="nav.about">About us</a>
+        <a href="index.html#contact" class="drawer-link flex items-center px-4 py-3 rounded-xl text-text-light dark:text-text-dark font-medium hover:bg-primary/5 dark:hover:bg-primary/10 hover:text-primary transition-colors" data-i18n="header.contactUs">Contact us</a>
+      </nav>
+      <div class="px-5 pb-5">
+        <a href="scheduling.html" class="drawer-link flex items-center justify-center w-full bg-primary text-white font-semibold py-3 px-6 rounded-full shadow hover:opacity-90 transition-opacity" data-i18n="header.bookCall">Book a call</a>
+      </div>
+      <div class="px-5 py-4 border-t border-helper/20 dark:border-helper/10 flex items-center justify-between">
+        <button id="drawer-theme-toggle"
+          class="flex items-center gap-2 px-3 py-2 rounded-xl text-text-light dark:text-text-dark text-sm font-medium hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+          <img src="src/assets/icon_light_mode-light.svg" class="h-5 w-5 block dark:hidden" alt="Light mode" />
+          <img src="src/assets/icon_dark_mode.svg" class="h-5 w-5 hidden dark:block" alt="Dark mode" />
+          <span data-i18n="nav.appearance">Appearance</span>
+        </button>
+        <div class="relative">
+          <button id="drawer-lang-toggle"
+            class="flex items-center gap-2 px-3 py-2 rounded-xl text-text-light dark:text-text-dark text-sm font-medium hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+            <img src="src/assets/icon_language-light.svg" class="h-5 w-5 block dark:hidden" alt="" />
+            <img src="src/assets/icon_language.svg" class="h-5 w-5 hidden dark:block" alt="" />
+            <span id="drawer-current-lang">EN</span>
+          </button>
+          <div id="drawer-lang-menu" class="hidden absolute bottom-full right-0 mb-2 w-28 bg-card-light dark:bg-card-dark rounded-lg shadow-lg py-1">
+            <a data-lang="en" class="block px-4 py-2 text-sm text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10" href="#">English</a>
+            <a data-lang="es" class="block px-4 py-2 text-sm text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10" href="#">Español</a>
+          </div>
+        </div>
+      </div>
+    </aside>
 
     <main class="pt-24">
       <div class="max-w-5xl mx-auto px-6">
@@ -408,11 +455,11 @@
     const logoImg = document.getElementById("logo-img");
 
     function updateLogo() {
-      if (!logoImg) return;
       const isDark = document.documentElement.classList.contains("dark");
-      logoImg.src = isDark
-        ? "src/assets/quantico-slogan-white.png"
-        : "src/assets/quantico-slogan-orange.png";
+      const src = isDark ? "src/assets/quantico-slogan-white.png" : "src/assets/quantico-slogan-orange.png";
+      if (logoImg) logoImg.src = src;
+      const drawerLogo = document.getElementById("drawer-logo");
+      if (drawerLogo) drawerLogo.src = src;
     }
 
     function updateArrowIcons() {
@@ -476,6 +523,55 @@
       } else if (mq.addListener) {
         mq.addListener(handleChange);
       }
+    }
+
+    // Drawer
+    const hamburger = document.getElementById("hamburger");
+    const drawerOverlay = document.getElementById("drawer-overlay");
+    const drawerEl = document.getElementById("drawer");
+    const drawerClose = document.getElementById("drawer-close");
+
+    function openDrawer() {
+      drawerOverlay.classList.remove("hidden");
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        drawerOverlay.classList.remove("opacity-0");
+        drawerEl.classList.remove("translate-x-full");
+      }));
+      document.body.style.overflow = "hidden";
+      hamburger.setAttribute("aria-expanded", "true");
+    }
+
+    function closeDrawer() {
+      drawerOverlay.classList.add("opacity-0");
+      drawerEl.classList.add("translate-x-full");
+      setTimeout(() => drawerOverlay.classList.add("hidden"), 300);
+      document.body.style.overflow = "";
+      hamburger.setAttribute("aria-expanded", "false");
+    }
+
+    if (hamburger) hamburger.addEventListener("click", openDrawer);
+    if (drawerClose) drawerClose.addEventListener("click", closeDrawer);
+    if (drawerOverlay) drawerOverlay.addEventListener("click", closeDrawer);
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+    document.querySelectorAll(".drawer-link").forEach(link => link.addEventListener("click", closeDrawer));
+
+    const drawerThemeBtn = document.getElementById("drawer-theme-toggle");
+    if (drawerThemeBtn) {
+      drawerThemeBtn.addEventListener("click", () => {
+        const isDark = document.documentElement.classList.contains("dark");
+        localStorage.setItem(THEME_KEY, isDark ? "light" : "dark");
+        applyTheme(isDark ? "light" : "dark");
+      });
+    }
+
+    const drawerLangBtn = document.getElementById("drawer-lang-toggle");
+    const drawerLangMenu = document.getElementById("drawer-lang-menu");
+    if (drawerLangBtn && drawerLangMenu) {
+      drawerLangBtn.addEventListener("click", e => { e.stopPropagation(); drawerLangMenu.classList.toggle("hidden"); });
+      document.addEventListener("click", () => drawerLangMenu.classList.add("hidden"));
+      drawerLangMenu.querySelectorAll("[data-lang]").forEach(opt => {
+        opt.addEventListener("click", e => { e.preventDefault(); applyLanguage(opt.getAttribute("data-lang")); drawerLangMenu.classList.add("hidden"); });
+      });
     }
 
     // ===== PROJECT DETAIL + NAV LOGIC =====

@@ -6,12 +6,32 @@ const translations = {
     // Header
     "header.lang.en": "EN",
     "header.lang.es": "ES",
+    "header.contactUs": "Contact us",
+    "header.bookCall": "Book a call",
+    "nav.home": "Home",
+    "nav.portfolio": "Portfolio",
+    "nav.about": "About us",
+    "nav.appearance": "Appearance",
+
+    // Scheduling page
+    "scheduling.label": "Schedule a call",
+    "scheduling.title": "Let's talk about your next project",
+    "scheduling.subtitle": "Pick a time that works for you and we'll take it from there. No commitments — just a conversation.",
+    "scheduling.what.title": "What to expect",
+    "scheduling.what.item1.title": "30-minute intro call",
+    "scheduling.what.item1.body": "A focused chat to understand your goals, challenges, and timeline.",
+    "scheduling.what.item2.title": "No sales pressure",
+    "scheduling.what.item2.body": "We listen first. If there's a fit, we'll tell you honestly. If not, we'll say that too.",
+    "scheduling.what.item3.title": "Clear next steps",
+    "scheduling.what.item3.body": "You'll leave with a concrete idea of what working together could look like.",
+    "scheduling.contact": "Prefer email?",
+    "scheduling.contactLink": "Reach us directly at rodrigo@quantico.gt",
 
     // Hero
     "hero.title": "Solutions through data",
     "hero.subtitle":
       "We transform complex data into clear, actionable insights that drive growth and innovation for your business.",
-    "hero.ctaPrimary": "Get in touch",
+    "hero.ctaPrimary": "Book a call",
     "hero.ctaSecondary": "View our work",
 
     // Portfolio
@@ -170,12 +190,32 @@ const translations = {
     // Header
     "header.lang.en": "EN",
     "header.lang.es": "ES",
+    "header.contactUs": "Contáctanos",
+    "header.bookCall": "Agenda una llamada",
+    "nav.home": "Inicio",
+    "nav.portfolio": "Portafolio",
+    "nav.about": "Sobre nosotros",
+    "nav.appearance": "Apariencia",
+
+    // Scheduling page
+    "scheduling.label": "Agenda una llamada",
+    "scheduling.title": "Hablemos de tu próximo proyecto",
+    "scheduling.subtitle": "Elige un horario que te funcione y lo tomamos desde ahí. Sin compromisos — solo una conversación.",
+    "scheduling.what.title": "¿Qué esperar?",
+    "scheduling.what.item1.title": "Llamada de 30 minutos",
+    "scheduling.what.item1.body": "Una charla enfocada para entender tus metas, retos y cronograma.",
+    "scheduling.what.item2.title": "Sin presión de ventas",
+    "scheduling.what.item2.body": "Primero escuchamos. Si hay afinidad, te lo decimos con honestidad. Si no, también.",
+    "scheduling.what.item3.title": "Próximos pasos claros",
+    "scheduling.what.item3.body": "Saldrás con una idea concreta de cómo podría verse trabajar juntos.",
+    "scheduling.contact": "¿Prefieres el correo?",
+    "scheduling.contactLink": "Escríbenos directamente a rodrigo@quantico.gt",
 
     // Hero
     "hero.title": "Soluciones a través de los datos",
     "hero.subtitle":
       "Transformamos datos complejos en ideas claras y accionables que impulsan el crecimiento y la innovación de tu negocio.",
-    "hero.ctaPrimary": "Contáctanos",
+    "hero.ctaPrimary": "Agenda una llamada",
     "hero.ctaSecondary": "Ver nuestro trabajo",
 
     // Portfolio
@@ -370,11 +410,10 @@ function applyLanguage(lang) {
     }
   });
 
-  // Update header current language label
-  const currentLangSpan = document.getElementById("current-lang");
-  if (currentLangSpan) {
-    currentLangSpan.textContent = lang.toUpperCase();
-  }
+  // Update language labels (header + drawer)
+  document.querySelectorAll("#current-lang, #drawer-current-lang").forEach(el => {
+    el.textContent = lang.toUpperCase();
+  });
 
   localStorage.setItem(LANG_STORAGE_KEY, lang);
 }
