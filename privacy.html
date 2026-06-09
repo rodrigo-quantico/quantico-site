@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Privacy Policy | Quantico</title>
+  <link rel="icon" type="image/png" href="src/assets/quantico-isotype-orange.png">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#fb693a",
+            secondary: "#99E3D4",
+            "text-light": "#5E5340",
+            "text-dark": "#ffffff",
+            "helper": "#C8BA8D",
+            "background-light": "#fefcf9",
+            "background-dark": "#5e5340",
+            "card-light": "#ffffff",
+            "card-dark": "#2a2723",
+          },
+          fontFamily: {
+            display: ["Roboto", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "1rem",
+          },
+        },
+      },
+    };
+  </script>
+
+  <style type="text/tailwindcss">
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(251, 105, 58, 0.1);
+    }
+
+    .dark .glass-panel {
+      background: rgba(42, 39, 35, 0.7);
+      border: 1px solid rgba(251, 105, 58, 0.15);
+    }
+
+    .social-icon:hover {
+      color: #fb693a;
+    }
+  </style>
+</head>
+
+<body
+  class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark transition-colors duration-300">
+  <div class="relative overflow-x-hidden" id="page-container">
+
+    <!-- SHARED HEADER -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+      <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a class="flex items-center" href="index.html">
+          <img id="logo-img" src="src/assets/quantico-slogan-orange.png" alt="Quantico Logo" class="h-32 w-auto" />
+          <span class="sr-only">Quantico</span>
+        </a>
+        <div class="flex items-center space-x-4">
+          <a href="index.html#contact"
+            class="hidden lg:inline-flex bg-primary/10 dark:bg-primary/20 text-primary font-semibold py-2.5 px-5 rounded-full hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors text-sm whitespace-nowrap"
+            data-i18n="header.contactUs">
+            Contact us
+          </a>
+          <a href="scheduling.html"
+            class="hidden lg:inline-flex bg-primary text-white font-semibold py-2.5 px-5 rounded-full shadow hover:opacity-90 transition-opacity text-sm whitespace-nowrap"
+            data-i18n="header.bookCall">
+            Book a call
+          </a>
+          <button
+            class="hidden lg:block p-2 rounded-full text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+            id="theme-toggle">
+            <img src="src/assets/icon_light_mode-light.svg" alt="Light mode" class="h-6 w-6 block dark:hidden" />
+            <img src="src/assets/icon_dark_mode.svg" alt="Dark mode" class="h-6 w-6 hidden dark:block" />
+          </button>
+          <div class="hidden lg:block relative">
+            <button
+              class="flex items-center space-x-1 p-2 rounded-full text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+              id="lang-toggle">
+              <img src="src/assets/icon_language-light.svg" alt="Language" class="h-5 w-5 block dark:hidden" />
+              <img src="src/assets/icon_language.svg" alt="Language" class="h-5 w-5 hidden dark:block" />
+              <span id="current-lang">EN</span>
+            </button>
+            <div class="hidden absolute right-0 mt-2 w-28 bg-card-light dark:bg-card-dark rounded-lg shadow-lg py-1"
+              id="lang-menu">
+              <a data-lang="en"
+                class="block px-4 py-2 text-sm text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10"
+                href="#">English</a>
+              <a data-lang="es"
+                class="block px-4 py-2 text-sm text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10"
+                href="#">Español</a>
+            </div>
+          </div>
+          <button id="hamburger" aria-label="Open menu" aria-expanded="false"
+            class="lg:hidden p-2 rounded-full text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+            <span class="material-icons">menu</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- DRAWER OVERLAY -->
+    <div id="drawer-overlay"
+      class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300"></div>
+
+    <!-- SIDE DRAWER -->
+    <aside id="drawer"
+      class="fixed top-0 right-0 bottom-0 z-50 w-72 bg-background-light dark:bg-background-dark shadow-2xl translate-x-full transition-transform duration-300 ease-out flex flex-col">
+      <div class="flex items-center justify-between px-5 py-4 border-b border-helper/20 dark:border-helper/10">
+        <img id="drawer-logo" src="src/assets/quantico-slogan-orange.png" alt="Quantico" class="h-20 w-auto" />
+        <button id="drawer-close" aria-label="Close menu"
+          class="p-2 rounded-full text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+          <span class="material-icons">close</span>
+        </button>
+      </div>
+      <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
+        <a href="index.html"
+          class="drawer-link flex items-center px-4 py-3 rounded-xl text-text-light dark:text-text-dark font-medium hover:bg-primary/5 dark:hover:bg-primary/10 hover:text-primary transition-colors"
+          data-i18n="nav.home">Home</a>
+        <a href="index.html#portfolio"
+          class="drawer-link flex items-center px-4 py-3 rounded-xl text-text-light dark:text-text-dark font-medium hover:bg-primary/5 dark:hover:bg-primary/10 hover:text-primary transition-colors"
+          data-i18n="nav.portfolio">Portfolio</a>
+        <a href="index.html#about"
+          class="drawer-link flex items-center px-4 py-3 rounded-xl text-text-light dark:text-text-dark font-medium hover:bg-primary/5 dark:hover:bg-primary/10 hover:text-primary transition-colors"
+          data-i18n="nav.about">About us</a>
+        <a href="index.html#contact"
+          class="drawer-link flex items-center px-4 py-3 rounded-xl text-text-light dark:text-text-dark font-medium hover:bg-primary/5 dark:hover:bg-primary/10 hover:text-primary transition-colors"
+          data-i18n="header.contactUs">Contact us</a>
+      </nav>
+      <div class="px-5 pb-5">
+        <a href="scheduling.html"
+          class="drawer-link flex items-center justify-center w-full bg-primary text-white font-semibold py-3 px-6 rounded-full shadow hover:opacity-90 transition-opacity"
+          data-i18n="header.bookCall">Book a call</a>
+      </div>
+      <div class="px-5 py-4 border-t border-helper/20 dark:border-helper/10 flex items-center justify-between">
+        <button id="drawer-theme-toggle"
+          class="flex items-center gap-2 px-3 py-2 rounded-xl text-text-light dark:text-text-dark text-sm font-medium hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+          <img src="src/assets/icon_light_mode-light.svg" class="h-5 w-5 block dark:hidden" alt="Light mode" />
+          <img src="src/assets/icon_dark_mode.svg" class="h-5 w-5 hidden dark:block" alt="Dark mode" />
+          <span data-i18n="nav.appearance">Appearance</span>
+        </button>
+        <div class="relative">
+          <button id="drawer-lang-toggle"
+            class="flex items-center gap-2 px-3 py-2 rounded-xl text-text-light dark:text-text-dark text-sm font-medium hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+            <img src="src/assets/icon_language-light.svg" class="h-5 w-5 block dark:hidden" alt="" />
+            <img src="src/assets/icon_language.svg" class="h-5 w-5 hidden dark:block" alt="" />
+            <span id="drawer-current-lang">EN</span>
+          </button>
+          <div id="drawer-lang-menu"
+            class="hidden absolute bottom-full right-0 mb-2 w-28 bg-card-light dark:bg-card-dark rounded-lg shadow-lg py-1">
+            <a data-lang="en"
+              class="block px-4 py-2 text-sm text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10"
+              href="#">English</a>
+            <a data-lang="es"
+              class="block px-4 py-2 text-sm text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/10"
+              href="#">Español</a>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="pt-48 pb-24">
+
+      <!-- Hero -->
+      <header class="max-w-5xl mx-auto px-6 mb-20 text-center">
+        <span
+          class="text-xs font-bold tracking-widest text-primary uppercase mb-4 inline-block">Legal Document</span>
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-text-light dark:text-text-dark mb-6">Privacy Policy</h1>
+        <div
+          class="flex items-center justify-center space-x-2 text-text-light/70 dark:text-text-dark/70">
+          <span class="material-symbols-outlined text-sm">schedule</span>
+          <p>Last Updated: June 2026</p>
+        </div>
+      </header>
+
+      <!-- Content Layout -->
+      <div class="max-w-5xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16">
+
+        <!-- Sidebar Navigation -->
+        <aside class="hidden lg:block lg:col-span-3 sticky top-48 h-fit">
+          <div class="glass-panel p-6 rounded-2xl">
+            <h4
+              class="text-xs font-bold tracking-widest text-text-light/60 dark:text-text-dark/60 mb-4 uppercase">
+              Contents</h4>
+            <nav class="flex flex-col space-y-3">
+              <a class="nav-link text-sm text-text-light/70 dark:text-text-dark/70 hover:text-primary transition-colors"
+                href="#introduction">Introduction</a>
+              <a class="nav-link text-sm text-text-light/70 dark:text-text-dark/70 hover:text-primary transition-colors"
+                href="#collection">Information We Collect</a>
+              <a class="nav-link text-sm text-text-light/70 dark:text-text-dark/70 hover:text-primary transition-colors"
+                href="#usage">How We Use Information</a>
+              <a class="nav-link text-sm text-text-light/70 dark:text-text-dark/70 hover:text-primary transition-colors"
+                href="#sharing">Information Sharing</a>
+              <a class="nav-link text-sm text-text-light/70 dark:text-text-dark/70 hover:text-primary transition-colors"
+                href="#security">Data Security</a>
+              <a class="nav-link text-sm text-text-light/70 dark:text-text-dark/70 hover:text-primary transition-colors"
+                href="#third-party">Third-Party Services</a>
+              <a class="nav-link text-sm text-text-light/70 dark:text-text-dark/70 hover:text-primary transition-colors"
+                href="#rights">Your Rights</a>
+              <a class="nav-link text-sm text-text-light/70 dark:text-text-dark/70 hover:text-primary transition-colors"
+                href="#contact-privacy">Contact Information</a>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- Main Legal Text -->
+        <article class="lg:col-span-9 space-y-24">
+
+          <!-- Introduction -->
+          <section class="scroll-mt-48" id="introduction">
+            <h2
+              class="text-3xl font-bold text-text-light dark:text-text-dark mb-8 border-b border-helper/30 dark:border-helper/20 pb-4">
+              Introduction</h2>
+            <p class="text-text-light/80 dark:text-text-dark/80 text-lg leading-relaxed">
+              At Quantico, we are committed to protecting your privacy and ensuring the security of your personal data.
+              This Privacy Policy outlines how we collect, use, and safeguard your information when you interact with
+              our software development services, data solutions, and digital platforms. By using our services, you
+              consent to the practices described in this policy.
+            </p>
+          </section>
+
+          <!-- Information Collection -->
+          <section class="scroll-mt-48" id="collection">
+            <h2
+              class="text-3xl font-bold text-text-light dark:text-text-dark mb-8 border-b border-helper/30 dark:border-helper/20 pb-4">
+              Information We Collect</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="glass-panel p-8 rounded-2xl hover:border-primary/30 transition-colors">
+                <span class="material-symbols-outlined text-primary mb-4 block" style="font-size:2rem;">person</span>
+                <h3 class="text-xl font-semibold text-text-light dark:text-text-dark mb-2">Personal Identity</h3>
+                <p class="text-text-light/80 dark:text-text-dark/80 text-base">We collect essential contact details
+                  including your full name, professional email address, and phone number when you engage with our team.
+                </p>
+              </div>
+              <div class="glass-panel p-8 rounded-2xl hover:border-primary/30 transition-colors">
+                <span class="material-symbols-outlined text-primary mb-4 block"
+                  style="font-size:2rem;">description</span>
+                <h3 class="text-xl font-semibold text-text-light dark:text-text-dark mb-2">Form Submissions</h3>
+                <p class="text-text-light/80 dark:text-text-dark/80 text-base">Information voluntarily provided
+                  through our contact forms, project request portals, and service inquiries helps us tailor our
+                  solutions.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Usage -->
+          <section class="scroll-mt-48" id="usage">
+            <h2
+              class="text-3xl font-bold text-text-light dark:text-text-dark mb-8 border-b border-helper/30 dark:border-helper/20 pb-4">
+              How We Use Information</h2>
+            <div class="space-y-6 text-text-light/80 dark:text-text-dark/80 text-lg">
+              <div
+                class="flex items-start space-x-4 bg-card-light dark:bg-card-dark p-6 rounded-2xl border border-helper/20 dark:border-helper/10 shadow-sm">
+                <span class="material-symbols-outlined text-secondary mt-1 shrink-0">check_circle</span>
+                <p>To provide, maintain, and optimize our professional software development and data consulting
+                  services.</p>
+              </div>
+              <div
+                class="flex items-start space-x-4 bg-card-light dark:bg-card-dark p-6 rounded-2xl border border-helper/20 dark:border-helper/10 shadow-sm">
+                <span class="material-symbols-outlined text-secondary mt-1 shrink-0">check_circle</span>
+                <p>To communicate project updates, respond to technical inquiries, and manage professional
+                  relationships.</p>
+              </div>
+              <div
+                class="flex items-start space-x-4 bg-card-light dark:bg-card-dark p-6 rounded-2xl border border-helper/20 dark:border-helper/10 shadow-sm">
+                <span class="material-symbols-outlined text-secondary mt-1 shrink-0">check_circle</span>
+                <p>To analyze user interaction patterns for improving our platform's UX/UI performance.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Sharing -->
+          <section class="scroll-mt-48" id="sharing">
+            <h2
+              class="text-3xl font-bold text-text-light dark:text-text-dark mb-8 border-b border-helper/30 dark:border-helper/20 pb-4">
+              Information Sharing</h2>
+            <p class="text-text-light/80 dark:text-text-dark/80 text-lg leading-relaxed">
+              Quantico does not sell, trade, or rent your personal identification information to others. We may share
+              generic aggregated demographic information not linked to any personal identification information regarding
+              visitors and users with our business partners, trusted affiliates, and advertisers for the purposes
+              outlined above.
+            </p>
+          </section>
+
+          <!-- Security -->
+          <section class="scroll-mt-48 relative overflow-hidden rounded-3xl p-12 border border-helper/30 dark:border-helper/20 shadow-md"
+            id="security">
+            <img
+              class="absolute inset-0 w-full h-full object-cover -z-10 opacity-10"
+              alt="Data security background"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyZzP2nnT_hAbh4UGtKvWRaqMGkp9TeaEH96AgDcv23UT3DPAr0rkozMYD30Vqdnwtix0YR7fqj3AJ6yImfBu_Cg7KCac1QM_tdnwnbMWM8kpJZCCf9CsX9ZJS0ixhCM5p5FCg9oNmwbcgkzq7qU9NmgX9YR_ZRcuMDvkI_JFgVxgTX9pGwgdhYiXQMJ12XFCNv9GvP6DFYAxTKepd-tMWXcNM9EPOh2fXyHDjAs2Z_vwbemVfVCDEAM0r6suhmhfayMHRCiZp3Z8" />
+            <div
+              class="relative z-10 bg-card-light/90 dark:bg-card-dark/90 backdrop-blur-md p-8 rounded-2xl border border-helper/20 dark:border-helper/10">
+              <h2 class="text-3xl font-bold text-text-light dark:text-text-dark mb-6">Data Security</h2>
+              <p class="text-text-light/80 dark:text-text-dark/80 text-lg leading-relaxed">
+                We adopt appropriate data collection, storage, and processing practices and security measures to
+                protect against unauthorized access, alteration, disclosure, or destruction of your personal
+                information, username, password, transaction information, and data stored on our site. Our
+                infrastructure utilizes enterprise-grade encryption and routine security audits to maintain an epic
+                scale of safety.
+              </p>
+            </div>
+          </section>
+
+          <!-- Third Party -->
+          <section class="scroll-mt-48" id="third-party">
+            <h2
+              class="text-3xl font-bold text-text-light dark:text-text-dark mb-8 border-b border-helper/30 dark:border-helper/20 pb-4">
+              Third-Party Services</h2>
+            <p class="text-text-light/80 dark:text-text-dark/80 text-lg leading-relaxed">
+              Users may find advertising or other content on our site that links to the sites and services of our
+              partners, suppliers, advertisers, sponsors, licensors, and other third parties. We do not control the
+              content or links that appear on these sites and are not responsible for the practices employed by websites
+              linked to or from our site.
+            </p>
+          </section>
+
+          <!-- Rights -->
+          <section class="scroll-mt-48" id="rights">
+            <h2
+              class="text-3xl font-bold text-text-light dark:text-text-dark mb-8 border-b border-helper/30 dark:border-helper/20 pb-4">
+              Your Rights</h2>
+            <p class="text-text-light/80 dark:text-text-dark/80 text-lg mb-8">As a data subject, you have the
+              right to:</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div
+                class="flex items-center space-x-3 p-6 bg-card-light dark:bg-card-dark rounded-2xl border border-helper/20 dark:border-helper/10 hover:border-secondary/40 transition-all shadow-sm">
+                <span class="material-symbols-outlined text-secondary shrink-0">visibility</span>
+                <span class="font-body-md font-semibold text-text-light dark:text-text-dark">Access your data</span>
+              </div>
+              <div
+                class="flex items-center space-x-3 p-6 bg-card-light dark:bg-card-dark rounded-2xl border border-helper/20 dark:border-helper/10 hover:border-secondary/40 transition-all shadow-sm">
+                <span class="material-symbols-outlined text-secondary shrink-0">edit_note</span>
+                <span class="font-body-md font-semibold text-text-light dark:text-text-dark">Correct
+                  inaccuracies</span>
+              </div>
+              <div
+                class="flex items-center space-x-3 p-6 bg-card-light dark:bg-card-dark rounded-2xl border border-helper/20 dark:border-helper/10 hover:border-secondary/40 transition-all shadow-sm">
+                <span class="material-symbols-outlined text-secondary shrink-0">delete_sweep</span>
+                <span class="font-body-md font-semibold text-text-light dark:text-text-dark">Request deletion</span>
+              </div>
+              <div
+                class="flex items-center space-x-3 p-6 bg-card-light dark:bg-card-dark rounded-2xl border border-helper/20 dark:border-helper/10 hover:border-secondary/40 transition-all shadow-sm">
+                <span class="material-symbols-outlined text-secondary shrink-0">do_not_disturb_on</span>
+                <span class="font-body-md font-semibold text-text-light dark:text-text-dark">Object to
+                  processing</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Contact -->
+          <section class="scroll-mt-48 pt-8" id="contact-privacy">
+            <div
+              class="glass-panel p-10 rounded-[2rem] flex flex-col md:flex-row items-center justify-between gap-8 shadow-lg">
+              <div class="text-center md:text-left">
+                <h2 class="text-3xl font-bold text-text-light dark:text-text-dark mb-2">Contact Information</h2>
+                <p class="text-text-light/80 dark:text-text-dark/80 text-lg mb-4">Questions regarding this
+                  policy or data processing?</p>
+                <a class="text-primary text-xl font-semibold hover:underline"
+                  href="mailto:admin@quantico.gt">admin@quantico.gt</a>
+                <a class="block mt-2 text-text-light/80 dark:text-text-dark/80 text-lg hover:text-primary transition-colors"
+                  href="tel:+15108313424">510-831-3424</a>
+              </div>
+              <a href="index.html#contact"
+                class="shrink-0 px-8 py-5 bg-primary text-white rounded-full text-sm font-semibold uppercase tracking-widest hover:opacity-90 transition-opacity shadow-lg">
+                Submit Privacy Inquiry
+              </a>
+            </div>
+          </section>
+
+        </article>
+      </div>
+    </main>
+
+    <footer class="py-12 bg-background-light dark:bg-background-dark">
+      <div class="max-w-5xl mx-auto px-6">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 text-sm text-text-light/80 dark:text-text-dark/80">
+          <p class="order-2 md:order-1" data-i18n="footer.copyright">
+            © 2020 Quantico: Solutions through data
+          </p>
+          <div class="flex space-x-5 order-1 md:order-2">
+            <a aria-label="LinkedIn" class="transition-colors duration-300 social-icon"
+              href="https://www.linkedin.com/company/quantico-gt/" target="_blank">
+              <svg class="h-5 w-5 fill-current" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <title>LinkedIn</title>
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z">
+                </path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div
+          class="mt-8 pt-8 border-t border-helper/20 dark:border-helper/10 flex flex-col sm:flex-row justify-between items-center gap-2 text-text-light/60 dark:text-text-dark/60">
+          <p data-i18n="footer.made">Made in LATAM with ❤️</p>
+          <a href="privacy.html" class="text-sm hover:text-primary transition-colors" data-i18n="footer.privacy">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="translations.js"></script>
+
+  <script>
+    const THEME_KEY = "quantico-theme";
+
+    function getPreferredTheme() {
+      const stored = localStorage.getItem(THEME_KEY);
+      if (stored === "light" || stored === "dark") return stored;
+      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark";
+      return "light";
+    }
+
+    const themeToggle = document.getElementById("theme-toggle");
+    const logoImg = document.getElementById("logo-img");
+
+    function updateLogo() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const src = isDark ? "src/assets/quantico-slogan-white.png" : "src/assets/quantico-slogan-orange.png";
+      if (logoImg) logoImg.src = src;
+      const drawerLogo = document.getElementById("drawer-logo");
+      if (drawerLogo) drawerLogo.src = src;
+    }
+
+    function applyTheme(theme) {
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+      updateLogo();
+    }
+
+    applyTheme(getPreferredTheme());
+
+    if (themeToggle) {
+      themeToggle.addEventListener("click", () => {
+        const isDark = document.documentElement.classList.contains("dark");
+        const nextTheme = isDark ? "light" : "dark";
+        localStorage.setItem(THEME_KEY, nextTheme);
+        applyTheme(nextTheme);
+      });
+    }
+
+    if (window.matchMedia) {
+      const mq = window.matchMedia("(prefers-color-scheme: dark)");
+      const handleChange = (e) => {
+        const stored = localStorage.getItem(THEME_KEY);
+        if (stored === "light" || stored === "dark") return;
+        applyTheme(e.matches ? "dark" : "light");
+      };
+      if (mq.addEventListener) {
+        mq.addEventListener("change", handleChange);
+      } else if (mq.addListener) {
+        mq.addListener(handleChange);
+      }
+    }
+
+    // Drawer
+    const hamburger = document.getElementById("hamburger");
+    const drawerOverlay = document.getElementById("drawer-overlay");
+    const drawerEl = document.getElementById("drawer");
+    const drawerClose = document.getElementById("drawer-close");
+
+    function openDrawer() {
+      drawerOverlay.classList.remove("hidden");
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        drawerOverlay.classList.remove("opacity-0");
+        drawerEl.classList.remove("translate-x-full");
+      }));
+      document.body.style.overflow = "hidden";
+      hamburger.setAttribute("aria-expanded", "true");
+    }
+
+    function closeDrawer() {
+      drawerOverlay.classList.add("opacity-0");
+      drawerEl.classList.add("translate-x-full");
+      setTimeout(() => drawerOverlay.classList.add("hidden"), 300);
+      document.body.style.overflow = "";
+      hamburger.setAttribute("aria-expanded", "false");
+    }
+
+    if (hamburger) hamburger.addEventListener("click", openDrawer);
+    if (drawerClose) drawerClose.addEventListener("click", closeDrawer);
+    if (drawerOverlay) drawerOverlay.addEventListener("click", closeDrawer);
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+    document.querySelectorAll(".drawer-link").forEach(link => link.addEventListener("click", closeDrawer));
+
+    const drawerThemeBtn = document.getElementById("drawer-theme-toggle");
+    if (drawerThemeBtn) {
+      drawerThemeBtn.addEventListener("click", () => {
+        const isDark = document.documentElement.classList.contains("dark");
+        localStorage.setItem(THEME_KEY, isDark ? "light" : "dark");
+        applyTheme(isDark ? "light" : "dark");
+      });
+    }
+
+    const drawerLangBtn = document.getElementById("drawer-lang-toggle");
+    const drawerLangMenu = document.getElementById("drawer-lang-menu");
+    if (drawerLangBtn && drawerLangMenu) {
+      drawerLangBtn.addEventListener("click", e => { e.stopPropagation(); drawerLangMenu.classList.toggle("hidden"); });
+      document.addEventListener("click", () => drawerLangMenu.classList.add("hidden"));
+      drawerLangMenu.querySelectorAll("[data-lang]").forEach(opt => {
+        opt.addEventListener("click", e => { e.preventDefault(); applyLanguage(opt.getAttribute("data-lang")); drawerLangMenu.classList.add("hidden"); });
+      });
+    }
+
+    const langToggle = document.getElementById("lang-toggle");
+    const langMenu = document.getElementById("lang-menu");
+    if (langToggle && langMenu) {
+      langToggle.addEventListener("click", e => { e.stopPropagation(); langMenu.classList.toggle("hidden"); });
+      document.addEventListener("click", () => langMenu.classList.add("hidden"));
+      langMenu.querySelectorAll("[data-lang]").forEach(opt => {
+        opt.addEventListener("click", e => { e.preventDefault(); applyLanguage(opt.getAttribute("data-lang")); langMenu.classList.add("hidden"); });
+      });
+    }
+
+    // Sidebar scroll highlighting
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        if (window.pageYOffset >= section.offsetTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('text-primary', 'font-bold');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('text-primary', 'font-bold');
+        }
+      });
+    });
+
+    // Parallax on security section background
+    window.addEventListener('scroll', () => {
+      const bg = document.querySelector('#security img');
+      if (bg) bg.style.transform = `translateY(${window.pageYOffset * 0.03}px)`;
+    });
+  </script>
+</body>
+
+</html>
