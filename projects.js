@@ -2,9 +2,10 @@
 const projects = [
   {
     id: "gflow-loans",
-    title: "GFlow",
+    title: "LMS",
     subtitle: "Loan Management Software",
     image: "src/assets/project-cover-gflow.png",
+    lightImage: "src/assets/project-cover-gflow-light.png",
     video: "src/assets/video-glflow-lms.mp4",
     description: `
       GFlow is a loan management platform designed to help financial institutions
@@ -21,6 +22,7 @@ const projects = [
     title: "Wallet",
     subtitle: "Digital Wallet",
     image: "src/assets/project-cover-digital-wallet.png",
+    lightImage: "src/assets/project-cover-digital-wallet-light.png",
     video: "src/assets/video-digital-wallet.mp4",
     description: `
       A digital wallet that lets users send, receive, and manage money
@@ -37,6 +39,7 @@ const projects = [
     title: "YoTaxi",
     subtitle: "Taxi App in San Francisco",
     image: "src/assets/project-cover-yotaxi.png",
+    lightImage: "src/assets/project-cover-yotaxi-light.png",
     video: "src/assets/video-yotaxi.mp4",
     description: `
       YoTaxi is a ride-hailing app connecting passengers with licensed taxis
@@ -53,6 +56,7 @@ const projects = [
     title: "Adoptio",
     subtitle: "Pet Adopting App Concept",
     image: "src/assets/project-cover-adoptio.png",
+    lightImage: "src/assets/project-cover-adoptio-light.png",
     description: `
       Adoptio is a product concept that helps people discover pets ready for adoption,
       with guided flows and rich storytelling for each animal.
@@ -65,9 +69,10 @@ const projects = [
   },
   {
     id: "gflow-origination",
-    title: "GFlow Origination",
+    title: "LOS",
     subtitle: "Loan Origination Software",
     image: "src/assets/project-cover-gflow-prom.png",
+    lightImage: "src/assets/project-cover-gflow-prom-light.png",
     description: `
       GFlow Origination streamlines the entire loan origination process,
       from application to approval, with configurable workflows.

@@ -244,7 +244,7 @@
       <section class="py-20 md:py-32" id="tech-stack">
         <div class="max-w-5xl mx-auto px-6">
           <div class="flex flex-col items-center text-center">
-            <h2 class="text-3xl md:4xl font-bold text-text-light dark:text-text-dark" data-i18n="tech.title">
+            <h2 class="text-3xl md:text-4xl font-bold text-text-light dark:text-text-dark" data-i18n="tech.title">
               Our Technology Stack
             </h2>
             <p class="mt-4 max-w-2xl mx-auto text-text-light/80 dark:text-text-dark/80" data-i18n="tech.subtitle">
@@ -322,7 +322,7 @@
       <section class="py-20 md:py-32" id="why-quantico">
         <div class="max-w-5xl mx-auto px-6">
           <div class="max-w-3xl">
-            <h2 class="text-4xl md:5xl font-bold text-text-light dark:text-text-dark leading-tight"
+            <h2 class="text-4xl md:text-5xl font-bold text-text-light dark:text-text-dark leading-tight"
               data-i18n="why.title">
               Why Quantico?
             </h2>
@@ -444,7 +444,7 @@
           </div>
           <div class="max-w-4xl mx-auto bg-card-light dark:bg-card-dark rounded-xl p-8 md:p-12 shadow-lg">
             <div class="text-center">
-              <h2 class="text-3xl md:4xl font-bold text-text-light dark:text-text-dark" data-i18n="contact.title">
+              <h2 class="text-3xl md:text-4xl font-bold text-text-light dark:text-text-dark" data-i18n="contact.title">
                 Let's build something together
               </h2>
               <p class="mt-4 text-text-light/80 dark:text-text-dark/80" data-i18n="contact.subtitle">
@@ -650,14 +650,18 @@
           project.title ||
           "Project cover image";
 
+        const lightSrc = project.lightImage || project.image;
         card.innerHTML = `
           <img alt="${safeAlt}"
-               class="w-full h-96 object-cover transition-transform duration-300 group-hover:scale-105"
+               class="w-full h-96 object-cover transition-transform duration-300 group-hover:scale-105 block dark:hidden"
+               src="${lightSrc}" />
+          <img alt="${safeAlt}"
+               class="w-full h-96 object-cover transition-transform duration-300 group-hover:scale-105 hidden dark:block"
                src="${project.image}" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
+          <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
           <div class="absolute bottom-0 left-0 p-6">
-            <h3 class="text-xl font-bold text-white">${project.title}</h3>
-            <p class="text-white/80 mt-1">${project.subtitle}</p>
+            <h3 class="text-xl font-bold text-text-light dark:text-text-dark">${project.title}</h3>
+            <p class="text-text-light/80 dark:text-text-dark/80 mt-1">${project.subtitle}</p>
           </div>
         `;
 
