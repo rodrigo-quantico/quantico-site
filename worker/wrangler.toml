@@ -1,0 +1,21 @@
+name = "quantico-booking-worker"
+main = "booking-worker.js"
+compatibility_date = "2024-11-01"
+
+[vars]
+# Comma-separated list of origins allowed to call this worker.
+ALLOWED_ORIGIN = "https://quantico.gt,https://www.quantico.gt,http://localhost:8791"
+
+# "primary" books whichever account the refresh token belongs to
+# (rodrigo@quantico.gt). Use a specific calendar ID here instead if you'd
+# rather book a dedicated calendar.
+CALENDAR_ID = "primary"
+
+# The OAuth client ID from Google Cloud Console (Credentials → OAuth client).
+# Not sensitive on its own, safe as a plain var.
+GOOGLE_OAUTH_CLIENT_ID = "744941679591-2a7a9f0lusunumvfv50780v2vhjq6ula.apps.googleusercontent.com"
+
+# Secrets (set with `wrangler secret put <NAME>`, do not put here):
+#   GOOGLE_OAUTH_CLIENT_SECRET  — the OAuth client's secret
+#   GOOGLE_OAUTH_REFRESH_TOKEN  — refresh token obtained via OAuth Playground (see README.md)
+#   TURNSTILE_SECRET_KEY        — Cloudflare Turnstile secret key

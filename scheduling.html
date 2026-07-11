@@ -9,6 +9,7 @@
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
   <script>
     tailwind.config = {
@@ -38,11 +39,13 @@
   </script>
 
   <style>
-    .calendly-wrapper {
+    .booking-card {
       border-radius: 1.5rem;
-      overflow: hidden;
       box-shadow: 0 20px 60px rgba(94, 83, 64, 0.12);
     }
+
+    #slots-list::-webkit-scrollbar { width: 6px; }
+    #slots-list::-webkit-scrollbar-thumb { background: rgba(94, 83, 64, 0.25); border-radius: 9999px; }
 
     /* Pill badge */
     .pill {
@@ -207,17 +210,104 @@
           </p>
         </div>
 
-        <!-- MAIN GRID: Calendly left, info right -->
+        <!-- MAIN GRID: booking calendar left, info right -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
 
-          <!-- CALENDLY EMBED -->
+          <!-- CUSTOM BOOKING CALENDAR -->
           <div class="lg:col-span-2">
-            <div class="calendly-wrapper">
-              <div
-                id="calendly-widget"
-                class="calendly-inline-widget"
-                style="min-width:320px;height:700px;">
+            <div class="grid sm:grid-cols-2 gap-6">
+              <!-- Calendar -->
+              <div class="booking-card bg-card-light dark:bg-card-dark p-6">
+                <div class="flex justify-between items-center mb-6">
+                  <h3 class="font-bold text-text-light dark:text-text-dark" id="cal-month-label">&nbsp;</h3>
+                  <div class="flex gap-1">
+                    <button type="button" id="cal-prev" aria-label="Previous month"
+                      class="p-1.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 text-text-light dark:text-text-dark transition-colors">
+                      <span class="material-icons text-lg">chevron_left</span>
+                    </button>
+                    <button type="button" id="cal-next" aria-label="Next month"
+                      class="p-1.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 text-text-light dark:text-text-dark transition-colors">
+                      <span class="material-icons text-lg">chevron_right</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="grid grid-cols-7 gap-1 mb-2" id="cal-weekdays"></div>
+                <div class="grid grid-cols-7 gap-1" id="cal-days"></div>
               </div>
+
+              <!-- Time slots -->
+              <div class="booking-card bg-card-light dark:bg-card-dark p-6 flex flex-col">
+                <h3 class="font-bold text-text-light dark:text-text-dark mb-4" data-i18n="scheduling.slots.title">
+                  Available times
+                </h3>
+                <div class="space-y-2 max-h-[340px] overflow-y-auto pr-1" id="slots-list">
+                  <p class="text-sm text-text-light/60 dark:text-text-dark/60" data-i18n="scheduling.slots.pickDay">
+                    Pick a day to see available times.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Booking form -->
+            <div id="booking-form-wrap" class="hidden booking-card bg-card-light dark:bg-card-dark p-6 mt-6">
+              <h3 class="font-bold text-text-light dark:text-text-dark mb-1" data-i18n="scheduling.form.title">
+                Confirm your details
+              </h3>
+              <p class="text-sm text-primary font-medium mb-5" id="booking-selection-summary"></p>
+              <form id="booking-form" class="space-y-4" novalidate>
+                <div>
+                  <label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="booking-name"
+                    data-i18n="scheduling.form.name">Full name</label>
+                  <input id="booking-name" name="name" type="text" required
+                    class="w-full bg-background-light dark:bg-background-dark border-helper/50 dark:border-helper/30 rounded-lg shadow-sm focus:ring-primary focus:border-primary"
+                    data-i18n="scheduling.form.namePlaceholder" data-i18n-target="placeholder" placeholder="Jane Doe" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="booking-email"
+                    data-i18n="scheduling.form.email">Email address</label>
+                  <input id="booking-email" name="email" type="email" required
+                    class="w-full bg-background-light dark:bg-background-dark border-helper/50 dark:border-helper/30 rounded-lg shadow-sm focus:ring-primary focus:border-primary"
+                    data-i18n="scheduling.form.emailPlaceholder" data-i18n-target="placeholder" placeholder="jane@example.com" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="booking-notes"
+                    data-i18n="scheduling.form.notes">What's on your mind? (optional)</label>
+                  <textarea id="booking-notes" name="notes" rows="3"
+                    class="w-full bg-background-light dark:bg-background-dark border-helper/50 dark:border-helper/30 rounded-lg shadow-sm focus:ring-primary focus:border-primary"
+                    data-i18n="scheduling.form.notesPlaceholder" data-i18n-target="placeholder" placeholder="Tell us a bit about your project..."></textarea>
+                </div>
+
+                <input name="honey" style="display:none" tabindex="-1" autocomplete="off" />
+
+                <div class="flex justify-center">
+                  <div class="cf-turnstile" data-sitekey="0x4AAAAAACZTSvGctn87SUak"></div>
+                </div>
+
+                <p id="booking-error" class="hidden text-center text-sm text-red-600 dark:text-red-400"></p>
+
+                <button type="submit" id="booking-submit"
+                  class="w-full bg-primary text-white font-semibold py-3 px-6 rounded-full shadow hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
+                  data-i18n="scheduling.form.submit">
+                  Confirm booking
+                </button>
+              </form>
+            </div>
+
+            <!-- Success state -->
+            <div id="booking-success" class="hidden booking-card bg-card-light dark:bg-card-dark p-8 mt-6 text-center">
+              <span class="material-icons text-primary text-5xl mb-3">event_available</span>
+              <h3 class="text-xl font-bold text-text-light dark:text-text-dark mb-2" data-i18n="scheduling.success.title">
+                You're booked!
+              </h3>
+              <p class="text-text-light/70 dark:text-text-dark/70" id="booking-success-summary"></p>
+              <p class="text-text-light/70 dark:text-text-dark/70 mb-4" data-i18n="scheduling.success.body">
+                A calendar invite is on its way to your inbox.
+              </p>
+              <a id="booking-meet-link" href="#" target="_blank" rel="noopener"
+                class="hidden inline-flex items-center gap-2 text-primary font-medium hover:opacity-75 transition-opacity">
+                <span class="material-icons text-base">videocam</span>
+                <span data-i18n="scheduling.success.meetLink">Join with Google Meet</span>
+              </a>
             </div>
           </div>
 
@@ -268,11 +358,20 @@
             <!-- Email alternative -->
             <div>
               <p class="text-sm text-text-light/70 dark:text-text-dark/70" data-i18n="scheduling.contact">Prefer email?</p>
-              <a href="mailto:rodrigo@quantico.gt"
+              <a href="mailto:admin@quantico.gt"
                 class="mt-1 inline-flex items-center gap-1 text-sm font-medium text-primary hover:opacity-75 transition-opacity"
                 data-i18n="scheduling.contactLink">
-                Reach us directly at rodrigo@quantico.gt
+                Reach us directly at admin@quantico.gt
                 <span class="material-icons text-base">open_in_new</span>
+              </a>
+
+              <p class="mt-4 text-sm text-text-light/70 dark:text-text-dark/70" data-i18n="scheduling.contact.orForm">
+                Or submit a form
+              </p>
+              <a href="index.html#contact"
+                class="mt-2 inline-flex items-center gap-1 bg-primary text-white font-semibold py-2.5 px-5 rounded-full shadow hover:opacity-90 transition-opacity text-sm"
+                data-i18n="scheduling.contact.formButton">
+                Go to contact form
               </a>
             </div>
 
@@ -355,26 +454,6 @@
       if (drawerLogo) drawerLogo.src = src;
     }
 
-    // Build the Calendly URL with colors matching the active theme
-    function getCalendlyUrl() {
-      const isDark = document.documentElement.classList.contains("dark");
-      const bg   = isDark ? "2a2723" : "fefcf9";
-      const text = isDark ? "ffffff" : "5e5340";
-      return `https://calendly.com/rodrigo-quantico/30min?primary_color=fb693a&background_color=${bg}&text_color=${text}&hide_gdpr_banner=1`;
-    }
-
-    // (Re)initialize the Calendly widget with the current theme colors
-    function initCalendly() {
-      const el = document.getElementById("calendly-widget");
-      if (!el) return;
-      if (typeof Calendly !== "undefined") {
-        el.innerHTML = "";
-        Calendly.initInlineWidget({ url: getCalendlyUrl(), parentElement: el });
-      } else {
-        el.setAttribute("data-url", getCalendlyUrl());
-      }
-    }
-
     function applyTheme(theme) {
       if (theme === "dark") {
         document.documentElement.classList.add("dark");
@@ -382,7 +461,6 @@
         document.documentElement.classList.remove("dark");
       }
       updateLogo();
-      initCalendly();
     }
 
     applyTheme(getPreferredTheme());
@@ -467,14 +545,18 @@
         card.href = `project.html?id=${project.id}`;
         card.className = "group relative w-72 md:w-96 flex-shrink-0 cursor-pointer rounded-xl overflow-hidden";
         const safeAlt = project.subtitle || project.title || "Project cover image";
+        const lightSrc = project.lightImage || project.image;
         card.innerHTML = `
           <img alt="${safeAlt}"
-               class="w-full h-96 object-cover transition-transform duration-300 group-hover:scale-105"
+               class="w-full h-96 object-cover transition-transform duration-300 group-hover:scale-105 block dark:hidden"
+               src="${lightSrc}" />
+          <img alt="${safeAlt}"
+               class="w-full h-96 object-cover transition-transform duration-300 group-hover:scale-105 hidden dark:block"
                src="${project.image}" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
+          <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
           <div class="absolute bottom-0 left-0 p-6">
-            <h3 class="text-xl font-bold text-white">${project.title}</h3>
-            <p class="text-white/80 mt-1">${project.subtitle}</p>
+            <h3 class="text-xl font-bold text-text-light dark:text-text-dark">${project.title}</h3>
+            <p class="text-text-light/80 dark:text-text-dark/80 mt-1">${project.subtitle}</p>
           </div>
         `;
         projectsContainer.appendChild(card);
@@ -494,14 +576,287 @@
       }
     }
 
-    // Load Calendly script dynamically so we can set the URL first
-    const el = document.getElementById("calendly-widget");
-    if (el) el.setAttribute("data-url", getCalendlyUrl());
+    // ---- Custom booking calendar ----
+    const BOOKING_WORKER_URL = "https://quantico-booking-worker.silent-king-b9bb.workers.dev";
+    const BOOKING_COOLDOWN_MS = 60 * 1000;
+    const BOOKING_COOLDOWN_KEY = "quantico_booking_last_submit";
+    const WEEKDAY_LABELS = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 
-    const calendlyScript = document.createElement("script");
-    calendlyScript.src = "https://assets.calendly.com/assets/external/widget.js";
-    calendlyScript.async = true;
-    document.body.appendChild(calendlyScript);
+    const calMonthLabel = document.getElementById("cal-month-label");
+    const calWeekdaysEl = document.getElementById("cal-weekdays");
+    const calDaysEl = document.getElementById("cal-days");
+    const calPrevBtn = document.getElementById("cal-prev");
+    const calNextBtn = document.getElementById("cal-next");
+    const slotsList = document.getElementById("slots-list");
+    const bookingFormWrap = document.getElementById("booking-form-wrap");
+    const bookingForm = document.getElementById("booking-form");
+    const bookingSubmit = document.getElementById("booking-submit");
+    const bookingError = document.getElementById("booking-error");
+    const bookingSuccess = document.getElementById("booking-success");
+    const bookingSelectionSummary = document.getElementById("booking-selection-summary");
+    const bookingSuccessSummary = document.getElementById("booking-success-summary");
+    const bookingMeetLink = document.getElementById("booking-meet-link");
+
+    if (calDaysEl) {
+      const today = new Date();
+      let calViewDate = new Date(today.getFullYear(), today.getMonth(), 1);
+      let selectedDate = null; // "YYYY-MM-DD"
+      let selectedTime = null; // "HH:MM"
+      let availabilityCache = {}; // dateStr -> string[] once loaded
+      let monthFetchToken = 0;
+
+      const pad2 = n => (n < 10 ? "0" + n : "" + n);
+      const toDateStr = d => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+      const todayStr = () => toDateStr(new Date());
+      const currentLocale = () => (window.currentLanguage === "es" ? "es-GT" : "en-US");
+
+      function formatTimeLabel(time) {
+        const [h, m] = time.split(":").map(Number);
+        return new Date(2000, 0, 1, h, m).toLocaleTimeString(currentLocale(), { hour: "numeric", minute: "2-digit" });
+      }
+
+      function renderWeekdayHeader() {
+        if (calWeekdaysEl.children.length) return;
+        WEEKDAY_LABELS.forEach(label => {
+          const cell = document.createElement("div");
+          cell.className = "text-center text-[10px] font-bold tracking-wide text-text-light/50 dark:text-text-dark/50";
+          cell.textContent = label;
+          calWeekdaysEl.appendChild(cell);
+        });
+      }
+
+      function dayButtonClass(state) {
+        const base = "aspect-square flex items-center justify-center text-sm rounded-lg transition-colors";
+        if (state === "disabled") return `${base} text-text-light/25 dark:text-text-dark/25 cursor-not-allowed`;
+        if (state === "selected") return `${base} font-semibold bg-primary text-white`;
+        return `${base} font-medium cursor-pointer text-text-light dark:text-text-dark hover:bg-primary/10 dark:hover:bg-primary/20`;
+      }
+
+      function renderCalendarGrid() {
+        calDaysEl.innerHTML = "";
+        const year = calViewDate.getFullYear();
+        const month = calViewDate.getMonth();
+        calMonthLabel.textContent = calViewDate.toLocaleDateString(currentLocale(), { month: "long", year: "numeric" });
+
+        const firstOfMonth = new Date(year, month, 1);
+        const startOffset = (firstOfMonth.getDay() + 6) % 7; // Monday-first
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const today = todayStr();
+
+        for (let i = 0; i < startOffset; i++) calDaysEl.appendChild(document.createElement("div"));
+
+        for (let day = 1; day <= daysInMonth; day++) {
+          const d = new Date(year, month, day);
+          const dateStr = toDateStr(d);
+          const isPast = dateStr < today;
+          const isWeekend = d.getDay() === 0 || d.getDay() === 6;
+          const knownEmpty = availabilityCache[dateStr] && availabilityCache[dateStr].length === 0;
+
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.textContent = String(day);
+          btn.dataset.date = dateStr;
+
+          if (isPast || isWeekend || knownEmpty) {
+            btn.disabled = true;
+            btn.className = dayButtonClass("disabled");
+          } else {
+            btn.className = dayButtonClass(dateStr === selectedDate ? "selected" : "default");
+            btn.addEventListener("click", () => selectDate(dateStr, btn));
+          }
+          calDaysEl.appendChild(btn);
+        }
+
+        fetchMonthAvailability();
+      }
+
+      async function fetchMonthAvailability() {
+        const year = calViewDate.getFullYear();
+        const month = calViewDate.getMonth();
+        const start = toDateStr(new Date(year, month, 1));
+        const end = toDateStr(new Date(year, month + 1, 0));
+        const token = ++monthFetchToken;
+        try {
+          const res = await fetch(`${BOOKING_WORKER_URL}/availability?start=${start}&end=${end}`);
+          const data = await res.json();
+          if (token !== monthFetchToken || !data.ok) return;
+          Object.assign(availabilityCache, data.availability);
+          markFullyBookedDays();
+          if (selectedDate) renderSlots(selectedDate);
+        } catch (err) {
+          console.error("Failed to load availability", err);
+        }
+      }
+
+      function markFullyBookedDays() {
+        Array.from(calDaysEl.children).forEach(btn => {
+          const dateStr = btn.dataset && btn.dataset.date;
+          if (!dateStr || btn.disabled) return;
+          const slots = availabilityCache[dateStr];
+          if (slots && slots.length === 0) {
+            btn.disabled = true;
+            btn.className = dayButtonClass("disabled");
+          }
+        });
+      }
+
+      function selectDate(dateStr, btnEl) {
+        selectedDate = dateStr;
+        selectedTime = null;
+        Array.from(calDaysEl.children).forEach(btn => {
+          if (!btn.dataset || !btn.dataset.date || btn.disabled) return;
+          btn.className = dayButtonClass(btn === btnEl ? "selected" : "default");
+        });
+        bookingFormWrap.classList.add("hidden");
+        bookingSuccess.classList.add("hidden");
+        renderSlots(dateStr);
+      }
+
+      function renderSlots(dateStr) {
+        slotsList.innerHTML = "";
+        const slots = availabilityCache[dateStr];
+        if (slots === undefined) {
+          slotsList.innerHTML = `<p class="text-sm text-text-light/60 dark:text-text-dark/60">${t("scheduling.slots.loading")}</p>`;
+          return;
+        }
+        if (slots.length === 0) {
+          slotsList.innerHTML = `<p class="text-sm text-text-light/60 dark:text-text-dark/60">${t("scheduling.slots.empty")}</p>`;
+          return;
+        }
+        slots.forEach(time => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "w-full py-3 px-4 border border-helper/50 dark:border-helper/30 rounded-lg text-sm font-medium text-left text-text-light dark:text-text-dark hover:border-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors";
+          btn.textContent = formatTimeLabel(time);
+          btn.addEventListener("click", () => selectSlot(time, btn));
+          slotsList.appendChild(btn);
+        });
+      }
+
+      function selectSlot(time, btnEl) {
+        selectedTime = time;
+        Array.from(slotsList.children).forEach(btn => {
+          btn.classList.remove("bg-primary", "text-white", "border-primary");
+        });
+        if (btnEl) btnEl.classList.add("bg-primary", "text-white", "border-primary");
+        bookingError.classList.add("hidden");
+        bookingSuccess.classList.add("hidden");
+        bookingFormWrap.classList.remove("hidden");
+        const dateLabel = new Date(selectedDate + "T00:00:00").toLocaleDateString(currentLocale(), { weekday: "long", month: "long", day: "numeric" });
+        bookingSelectionSummary.textContent = `${dateLabel} · ${formatTimeLabel(time)}`;
+        bookingFormWrap.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+
+      if (calPrevBtn) {
+        calPrevBtn.addEventListener("click", () => {
+          calViewDate.setMonth(calViewDate.getMonth() - 1);
+          selectedDate = null;
+          selectedTime = null;
+          bookingFormWrap.classList.add("hidden");
+          renderCalendarGrid();
+        });
+      }
+      if (calNextBtn) {
+        calNextBtn.addEventListener("click", () => {
+          calViewDate.setMonth(calViewDate.getMonth() + 1);
+          selectedDate = null;
+          selectedTime = null;
+          bookingFormWrap.classList.add("hidden");
+          renderCalendarGrid();
+        });
+      }
+
+      if (bookingForm) {
+        bookingForm.addEventListener("submit", async e => {
+          e.preventDefault();
+          if (!selectedDate || !selectedTime) return;
+
+          bookingError.classList.add("hidden");
+
+          const fd = new FormData(bookingForm);
+
+          // Honeypot: bots fill hidden fields.
+          if (fd.get("honey")) {
+            bookingFormWrap.classList.add("hidden");
+            bookingSuccess.classList.remove("hidden");
+            return;
+          }
+
+          const last = Number(localStorage.getItem(BOOKING_COOLDOWN_KEY) || "0");
+          if (Date.now() - last < BOOKING_COOLDOWN_MS) {
+            bookingError.textContent = t("scheduling.form.errorCooldown");
+            bookingError.classList.remove("hidden");
+            return;
+          }
+
+          const name = (fd.get("name") || "").trim();
+          const email = (fd.get("email") || "").trim();
+          const notes = (fd.get("notes") || "").trim();
+          const turnstileToken = fd.get("cf-turnstile-response");
+
+          if (!name || !email) {
+            bookingError.textContent = t("scheduling.form.errorFields");
+            bookingError.classList.remove("hidden");
+            return;
+          }
+          if (!turnstileToken) {
+            bookingError.textContent = t("scheduling.form.errorCaptcha");
+            bookingError.classList.remove("hidden");
+            return;
+          }
+
+          bookingSubmit.disabled = true;
+          const originalLabel = bookingSubmit.textContent;
+          bookingSubmit.textContent = t("scheduling.form.submitting");
+
+          try {
+            const res = await fetch(`${BOOKING_WORKER_URL}/book`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ date: selectedDate, time: selectedTime, name, email, notes, turnstileToken, honey: fd.get("honey") }),
+            });
+            const data = await res.json().catch(() => ({}));
+
+            if (!data.ok) {
+              if (data.error === "slot_taken") {
+                bookingError.textContent = t("scheduling.form.errorTaken");
+                delete availabilityCache[selectedDate];
+                fetchMonthAvailability();
+              } else {
+                bookingError.textContent = t("scheduling.form.errorGeneric");
+              }
+              bookingError.classList.remove("hidden");
+              return;
+            }
+
+            localStorage.setItem(BOOKING_COOLDOWN_KEY, String(Date.now()));
+            bookingFormWrap.classList.add("hidden");
+            bookingSuccess.classList.remove("hidden");
+            bookingSuccessSummary.textContent = bookingSelectionSummary.textContent;
+            if (data.meetLink) {
+              bookingMeetLink.href = data.meetLink;
+              bookingMeetLink.classList.remove("hidden");
+            } else {
+              bookingMeetLink.classList.add("hidden");
+            }
+            bookingForm.reset();
+            if (window.turnstile) window.turnstile.reset();
+            delete availabilityCache[selectedDate];
+            fetchMonthAvailability();
+            selectedTime = null;
+          } catch (err) {
+            bookingError.textContent = t("scheduling.form.errorGeneric");
+            bookingError.classList.remove("hidden");
+          } finally {
+            bookingSubmit.disabled = false;
+            bookingSubmit.textContent = originalLabel;
+          }
+        });
+      }
+
+      renderWeekdayHeader();
+      renderCalendarGrid();
+    }
   </script>
 </body>
 </html>
