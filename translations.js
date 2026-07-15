@@ -31,7 +31,7 @@ const translations = {
 
     // Scheduling — custom calendar
     "scheduling.slots.title": "Available times",
-    "scheduling.tz.guatemala": "Guatemala Time",
+    "scheduling.tz.guatemala": "CST",
     "scheduling.tz.pacific": "US Pacific Time",
     "scheduling.tz.eastern": "US Eastern Time",
     "scheduling.slots.pickDay": "Pick a day to see available times.",
@@ -243,7 +243,7 @@ const translations = {
 
     // Scheduling — calendario personalizado
     "scheduling.slots.title": "Horarios disponibles",
-    "scheduling.tz.guatemala": "Hora de Guatemala",
+    "scheduling.tz.guatemala": "CST",
     "scheduling.tz.pacific": "Hora del Pacífico (EE. UU.)",
     "scheduling.tz.eastern": "Hora del Este (EE. UU.)",
     "scheduling.slots.pickDay": "Elige un día para ver los horarios disponibles.",
