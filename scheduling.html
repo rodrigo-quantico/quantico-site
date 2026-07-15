@@ -237,9 +237,17 @@
 
               <!-- Time slots -->
               <div class="booking-card bg-card-light dark:bg-card-dark p-6 flex flex-col">
-                <h3 class="font-bold text-text-light dark:text-text-dark mb-4" data-i18n="scheduling.slots.title">
-                  Available times
-                </h3>
+                <div class="flex items-center justify-between gap-3 mb-4">
+                  <h3 class="font-bold text-text-light dark:text-text-dark" data-i18n="scheduling.slots.title">
+                    Available times
+                  </h3>
+                  <select id="tz-select" aria-label="Timezone"
+                    class="text-xs font-medium bg-transparent border border-helper/50 dark:border-helper/30 rounded-lg px-2 py-1.5 text-text-light dark:text-text-dark focus:outline-none focus:ring-1 focus:ring-primary">
+                    <option value="America/Guatemala" data-i18n="scheduling.tz.guatemala">Guatemala Time</option>
+                    <option value="America/Los_Angeles" data-i18n="scheduling.tz.pacific">US Pacific Time</option>
+                    <option value="America/New_York" data-i18n="scheduling.tz.eastern">US Eastern Time</option>
+                  </select>
+                </div>
                 <div class="space-y-2 max-h-[340px] overflow-y-auto pr-1" id="slots-list">
                   <p class="text-sm text-text-light/60 dark:text-text-dark/60" data-i18n="scheduling.slots.pickDay">
                     Pick a day to see available times.
@@ -369,7 +377,7 @@
                 Or submit a form
               </p>
               <a href="index.html#contact"
-                class="mt-2 inline-flex items-center gap-1 bg-primary text-white font-semibold py-2.5 px-5 rounded-full shadow hover:opacity-90 transition-opacity text-sm"
+                class="mt-2 inline-flex items-center gap-1 bg-primary/10 dark:bg-primary/20 text-primary font-semibold py-2.5 px-5 rounded-full hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors text-sm"
                 data-i18n="scheduling.contact.formButton">
                 Go to contact form
               </a>
@@ -596,23 +604,36 @@
     const bookingSelectionSummary = document.getElementById("booking-selection-summary");
     const bookingSuccessSummary = document.getElementById("booking-success-summary");
     const bookingMeetLink = document.getElementById("booking-meet-link");
+    const tzSelect = document.getElementById("tz-select");
 
     if (calDaysEl) {
       const today = new Date();
       let calViewDate = new Date(today.getFullYear(), today.getMonth(), 1);
       let selectedDate = null; // "YYYY-MM-DD"
-      let selectedTime = null; // "HH:MM"
+      let selectedTime = null; // "HH:MM", always in Guatemala wall-clock time (matches the worker's availability keys)
       let availabilityCache = {}; // dateStr -> string[] once loaded
       let monthFetchToken = 0;
+
+      const TZ_STORAGE_KEY = "quantico_scheduling_tz";
+      let displayTimezone = localStorage.getItem(TZ_STORAGE_KEY) || "America/Guatemala";
+      if (tzSelect) tzSelect.value = displayTimezone;
 
       const pad2 = n => (n < 10 ? "0" + n : "" + n);
       const toDateStr = d => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
       const todayStr = () => toDateStr(new Date());
       const currentLocale = () => (window.currentLanguage === "es" ? "es-GT" : "en-US");
 
-      function formatTimeLabel(time) {
-        const [h, m] = time.split(":").map(Number);
-        return new Date(2000, 0, 1, h, m).toLocaleTimeString(currentLocale(), { hour: "numeric", minute: "2-digit" });
+      // Slot times from the worker are Guatemala wall-clock (fixed UTC-6, no DST).
+      // Building the instant with that fixed offset lets Intl convert correctly
+      // to any target zone, DST included.
+      function formatTimeLabel(dateStr, time) {
+        const instant = new Date(`${dateStr}T${time}:00-06:00`);
+        return instant.toLocaleTimeString(currentLocale(), {
+          hour: "numeric",
+          minute: "2-digit",
+          timeZone: displayTimezone,
+          timeZoneName: "short",
+        });
       }
 
       function renderWeekdayHeader() {
@@ -727,10 +748,17 @@
           const btn = document.createElement("button");
           btn.type = "button";
           btn.className = "w-full py-3 px-4 border border-helper/50 dark:border-helper/30 rounded-lg text-sm font-medium text-left text-text-light dark:text-text-dark hover:border-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors";
-          btn.textContent = formatTimeLabel(time);
+          btn.textContent = formatTimeLabel(dateStr, time);
           btn.addEventListener("click", () => selectSlot(time, btn));
+          if (time === selectedTime) btn.classList.add("bg-primary", "text-white", "border-primary");
           slotsList.appendChild(btn);
         });
+      }
+
+      function updateSelectionSummary() {
+        if (!selectedDate || !selectedTime) return;
+        const dateLabel = new Date(selectedDate + "T00:00:00").toLocaleDateString(currentLocale(), { weekday: "long", month: "long", day: "numeric" });
+        bookingSelectionSummary.textContent = `${dateLabel} · ${formatTimeLabel(selectedDate, selectedTime)}`;
       }
 
       function selectSlot(time, btnEl) {
@@ -742,9 +770,17 @@
         bookingError.classList.add("hidden");
         bookingSuccess.classList.add("hidden");
         bookingFormWrap.classList.remove("hidden");
-        const dateLabel = new Date(selectedDate + "T00:00:00").toLocaleDateString(currentLocale(), { weekday: "long", month: "long", day: "numeric" });
-        bookingSelectionSummary.textContent = `${dateLabel} · ${formatTimeLabel(time)}`;
+        updateSelectionSummary();
         bookingFormWrap.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+
+      if (tzSelect) {
+        tzSelect.addEventListener("change", () => {
+          displayTimezone = tzSelect.value;
+          localStorage.setItem(TZ_STORAGE_KEY, displayTimezone);
+          if (selectedDate) renderSlots(selectedDate);
+          updateSelectionSummary();
+        });
       }
 
       if (calPrevBtn) {
