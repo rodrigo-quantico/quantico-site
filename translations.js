@@ -133,6 +133,16 @@ const translations = {
     // Footer
     "footer.copyright": "© 2020 Quantico: Solutions through data",
     "footer.made": "Made in LATAM with ❤️",
+    "footer.privacy": "Privacy Policy",
+    "footer.menuTitle": "Menu",
+    "footer.industriesTitle": "Industries",
+    "footer.contactTitle": "Contact Us",
+    "footer.legalTitle": "Legal",
+    "footer.industries.finance": "Finance",
+    "footer.industries.transportation": "Transportation",
+    "footer.industries.fintech": "Fintech",
+    "footer.industries.healthcare": "Healthcare",
+    "footer.contact.address": "Guatemala City, Guatemala",
 
     // Project page (generic UI)
     "project.backToPortfolio": "Back to portfolio",
@@ -345,6 +355,16 @@ const translations = {
     // Footer
     "footer.copyright": "© 2020 Quantico: Soluciones a través de los datos",
     "footer.made": "Hecho en LATAM con ❤️",
+    "footer.privacy": "Política de Privacidad",
+    "footer.menuTitle": "Menú",
+    "footer.industriesTitle": "Industrias",
+    "footer.contactTitle": "Contáctanos",
+    "footer.legalTitle": "Legal",
+    "footer.industries.finance": "Finanzas",
+    "footer.industries.transportation": "Transporte",
+    "footer.industries.fintech": "Fintech",
+    "footer.industries.healthcare": "Salud",
+    "footer.contact.address": "Ciudad de Guatemala, Guatemala",
 
     // Project page (generic UI)
     "project.backToPortfolio": "Volver al portafolio",

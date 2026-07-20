@@ -388,14 +388,62 @@
       </div>
     </main>
 
-    <footer class="py-12 bg-background-light dark:bg-background-dark">
-      <div class="max-w-5xl mx-auto px-6">
+    <footer class="bg-card-light dark:bg-card-dark border-t border-helper/20 dark:border-helper/10">
+      <div class="max-w-5xl mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 gap-12 md:grid-cols-5 md:gap-8 text-center md:text-left">
+          <div class="flex justify-center md:justify-start items-start">
+            <a href="index.html" aria-label="Quantico home" class="inline-flex items-center">
+              <img id="footer-logo-img" src="src/assets/quantico-logo-orange.png" alt="Quantico" class="h-12 w-auto" />
+            </a>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold uppercase tracking-wide text-text-light dark:text-text-dark"
+              data-i18n="footer.menuTitle">Menu</h3>
+            <ul class="mt-4 space-y-3 text-sm text-text-light/70 dark:text-text-dark/70">
+              <li><a href="index.html" class="hover:text-primary transition-colors" data-i18n="nav.home">Home</a></li>
+              <li><a href="index.html#portfolio" class="hover:text-primary transition-colors" data-i18n="nav.portfolio">Portfolio</a></li>
+              <li><a href="index.html#about" class="hover:text-primary transition-colors" data-i18n="nav.about">About us</a></li>
+              <li><a href="index.html#contact" class="hover:text-primary transition-colors" data-i18n="header.contactUs">Contact us</a></li>
+              <li><a href="scheduling.html" class="hover:text-primary transition-colors" data-i18n="header.bookCall">Book a call</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold uppercase tracking-wide text-text-light dark:text-text-dark"
+              data-i18n="footer.industriesTitle">Industries</h3>
+            <ul class="mt-4 space-y-3 text-sm text-text-light/70 dark:text-text-dark/70">
+              <li><a href="project.html?id=gflow-loans" class="hover:text-primary transition-colors" data-i18n="footer.industries.finance">Finance</a></li>
+              <li><a href="project.html?id=yotaxi-sf" class="hover:text-primary transition-colors" data-i18n="footer.industries.transportation">Transportation</a></li>
+              <li><a href="project.html?id=digital-wallet" class="hover:text-primary transition-colors" data-i18n="footer.industries.fintech">Fintech</a></li>
+              <li><span class="cursor-default" data-i18n="footer.industries.healthcare">Healthcare</span></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold uppercase tracking-wide text-text-light dark:text-text-dark"
+              data-i18n="footer.contactTitle">Contact Us</h3>
+            <ul class="mt-4 space-y-3 text-sm text-text-light/70 dark:text-text-dark/70">
+              <li><a href="mailto:admin@quantico.gt" class="hover:text-primary transition-colors">admin@quantico.gt</a></li>
+              <li><a href="tel:+15108313424" class="hover:text-primary transition-colors">(510) 831-3424</a></li>
+              <li data-i18n="footer.contact.address">Guatemala City, Guatemala</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold uppercase tracking-wide text-text-light dark:text-text-dark"
+              data-i18n="footer.legalTitle">Legal</h3>
+            <ul class="mt-4 space-y-3 text-sm text-text-light/70 dark:text-text-dark/70">
+              <li><a href="privacy.html" class="hover:text-primary transition-colors" data-i18n="footer.privacy">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </div>
+
         <div
-          class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 text-sm text-text-light/80 dark:text-text-dark/80">
-          <p class="order-2 md:order-1" data-i18n="footer.copyright">
-            © 2020 Quantico: Solutions through data
-          </p>
-          <div class="flex space-x-5 order-1 md:order-2">
+          class="mt-12 pt-8 border-t border-helper/20 dark:border-helper/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-text-light/60 dark:text-text-dark/60">
+          <p data-i18n="footer.copyright">© 2020 Quantico: Solutions through data</p>
+          <div class="flex items-center gap-5">
+            <p data-i18n="footer.made">Made in LATAM with ❤️</p>
             <a aria-label="LinkedIn" class="transition-colors duration-300 social-icon"
               href="https://www.linkedin.com/company/quantico-gt/" target="_blank">
               <svg class="h-5 w-5 fill-current" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -406,11 +454,6 @@
               </svg>
             </a>
           </div>
-        </div>
-        <div
-          class="mt-8 pt-8 border-t border-helper/20 dark:border-helper/10 flex flex-col sm:flex-row justify-between items-center gap-2 text-text-light/60 dark:text-text-dark/60">
-          <p data-i18n="footer.made">Made in LATAM with ❤️</p>
-          <a href="privacy.html" class="text-sm hover:text-primary transition-colors" data-i18n="footer.privacy">Privacy Policy</a>
         </div>
       </div>
     </footer>
@@ -437,6 +480,8 @@
       if (logoImg) logoImg.src = src;
       const drawerLogo = document.getElementById("drawer-logo");
       if (drawerLogo) drawerLogo.src = src;
+      const footerLogo = document.getElementById("footer-logo-img");
+      if (footerLogo) footerLogo.src = isDark ? "src/assets/quantico-logo-white.png" : "src/assets/quantico-logo-orange.png";
     }
 
     function applyTheme(theme) {
