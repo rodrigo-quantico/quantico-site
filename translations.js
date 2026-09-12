@@ -131,7 +131,7 @@ const translations = {
     "contact.submit": "Send Message",
 
     // Footer
-    "footer.copyright": "© 2020 Quantico: Solutions through data",
+    "footer.copyright": "© {year} Quantico: Solutions through data",
     "footer.made": "Made in LATAM with ❤️",
     "footer.privacy": "Privacy Policy",
     "footer.menuTitle": "Menu",
@@ -353,7 +353,7 @@ const translations = {
     "contact.submit": "Enviar mensaje",
 
     // Footer
-    "footer.copyright": "© 2020 Quantico: Soluciones a través de los datos",
+    "footer.copyright": "© {year} Quantico: Soluciones a través de los datos",
     "footer.made": "Hecho en LATAM con ❤️",
     "footer.privacy": "Política de Privacidad",
     "footer.menuTitle": "Menú",
@@ -471,8 +471,9 @@ function applyLanguage(lang) {
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.getAttribute("data-i18n");
     if (!key) return;
-    const text = dict[key] || translations.en[key];
+    let text = dict[key] || translations.en[key];
     if (!text) return;
+    text = text.replace("{year}", new Date().getFullYear());
 
     const target = el.getAttribute("data-i18n-target");
 
